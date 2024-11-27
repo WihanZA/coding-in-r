@@ -1,0 +1,2757 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1"/>
+  <meta name="generator" content="distill" />
+
+  <style type="text/css">
+  /* Hide doc at startup (prevent jankiness while JS renders/transforms) */
+  body {
+    visibility: hidden;
+  }
+  </style>
+
+ <!--radix_placeholder_import_source-->
+ <!--/radix_placeholder_import_source-->
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    background-color: #232629;
+    color: #7a7c7d;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #7a7c7d;  padding-left: 4px; }
+div.sourceCode
+  { color: #cfcfc2; background-color: #232629; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span { color: #cfcfc2; } /* Normal */
+code span.al { color: #95da4c; background-color: #4d1f24; font-weight: bold; } /* Alert */
+code span.an { color: #3f8058; } /* Annotation */
+code span.at { color: #2980b9; } /* Attribute */
+code span.bn { color: #f67400; } /* BaseN */
+code span.bu { color: #7f8c8d; } /* BuiltIn */
+code span.cf { color: #fdbc4b; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #3daee9; } /* Char */
+code span.cn { color: #27aeae; font-weight: bold; } /* Constant */
+code span.co { color: #7a7c7d; } /* Comment */
+code span.cv { color: #7f8c8d; } /* CommentVar */
+code span.do { color: #a43340; } /* Documentation */
+code span.dt { color: #2980b9; } /* DataType */
+code span.dv { color: #f67400; } /* DecVal */
+code span.er { color: #da4453; text-decoration: underline; } /* Error */
+code span.ex { color: #0099ff; font-weight: bold; } /* Extension */
+code span.fl { color: #f67400; } /* Float */
+code span.fu { color: #8e44ad; } /* Function */
+code span.im { color: #27ae60; } /* Import */
+code span.in { color: #c45b00; } /* Information */
+code span.kw { color: #cfcfc2; font-weight: bold; } /* Keyword */
+code span.op { color: #cfcfc2; } /* Operator */
+code span.ot { color: #27ae60; } /* Other */
+code span.pp { color: #27ae60; } /* Preprocessor */
+code span.re { color: #2980b9; background-color: #153042; } /* RegionMarker */
+code span.sc { color: #3daee9; } /* SpecialChar */
+code span.ss { color: #da4453; } /* SpecialString */
+code span.st { color: #f44f4f; } /* String */
+code span.va { color: #27aeae; } /* Variable */
+code span.vs { color: #da4453; } /* VerbatimString */
+code span.wa { color: #da4453; } /* Warning */
+</style>
+
+
+  <!--radix_placeholder_meta_tags-->
+  <title>Introduction to R: Tutorial</title>
+
+  <meta property="description" itemprop="description" content="This post serves as the primary tutorial notes for the &quot;Introduction to R&quot; sessions of the Intensive Statistics course for MCom (Economics) students at Stellenbosch University (2024). This lecture is intended to offer a cursory introduction to enable students to perform basic operations in R and RStudio."/>
+
+
+  <!--  https://schema.org/Article -->
+  <meta property="article:published" itemprop="datePublished" content="2024-01-23"/>
+  <meta property="article:created" itemprop="dateCreated" content="2024-01-23"/>
+
+  <!--  https://developers.facebook.com/docs/sharing/webmasters#markup -->
+  <meta property="og:title" content="Introduction to R: Tutorial"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="This post serves as the primary tutorial notes for the &quot;Introduction to R&quot; sessions of the Intensive Statistics course for MCom (Economics) students at Stellenbosch University (2024). This lecture is intended to offer a cursory introduction to enable students to perform basic operations in R and RStudio."/>
+  <meta property="og:locale" content="en_US"/>
+
+  <!--  https://dev.twitter.com/cards/types/summary -->
+  <meta property="twitter:card" content="summary"/>
+  <meta property="twitter:title" content="Introduction to R: Tutorial"/>
+  <meta property="twitter:description" content="This post serves as the primary tutorial notes for the &quot;Introduction to R&quot; sessions of the Intensive Statistics course for MCom (Economics) students at Stellenbosch University (2024). This lecture is intended to offer a cursory introduction to enable students to perform basic operations in R and RStudio."/>
+
+  <!--/radix_placeholder_meta_tags-->
+  <!--radix_placeholder_rmarkdown_metadata-->
+
+  <script type="text/json" id="radix-rmarkdown-metadata">
+  {"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["title","description","date","output"]}},"value":[{"type":"character","attributes":{},"value":["Introduction to R: Tutorial"]},{"type":"character","attributes":{},"value":["This post serves as the primary tutorial notes for the \"Introduction to R\" sessions of the Intensive Statistics course for MCom (Economics) students at Stellenbosch University (2024). This lecture is intended to offer a cursory introduction to enable students to perform basic operations in R and RStudio.\n"]},{"type":"character","attributes":{},"value":["2024-01-23"]},{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["distill::distill_article"]}},"value":[{"type":"list","attributes":{"names":{"type":"character","attributes":{},"value":["self_contained","highlight","highlight_downlit","toc","toc_float"]}},"value":[{"type":"logical","attributes":{},"value":[false]},{"type":"character","attributes":{},"value":["breezedark"]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]},{"type":"logical","attributes":{},"value":[true]}]}]}]}
+  </script>
+  <!--/radix_placeholder_rmarkdown_metadata-->
+  
+  <script type="text/json" id="radix-resource-manifest">
+  {"type":"character","attributes":{},"value":["tutorial_files/figure-html5/autocor-1.png","tutorial_files/figure-html5/autocor-2.png","tutorial_files/figure-html5/coefplots1-1.png","tutorial_files/figure-html5/ggplot-1.png","tutorial_files/figure-html5/ggplot-2.png","tutorial_files/figure-html5/ggplot-3.png","tutorial_files/figure-html5/ggplot-4.png","tutorial_files/figure-html5/ggplot-5.png","tutorial_files/figure-html5/ggplot-6.png","tutorial_files/figure-html5/ggplot-7.png","tutorial_files/figure-html5/interactionplot2-1.png","tutorial_files/figure-html5/visual1-1.png","tutorial_files/figure-html5/visual1-2.png","tutorial_files/figure-html5/visual1-3.png"]}
+  </script>
+  <!--radix_placeholder_navigation_in_header-->
+  <!--/radix_placeholder_navigation_in_header-->
+  <!--radix_placeholder_distill-->
+
+  <style type="text/css">
+
+  body {
+    background-color: white;
+  }
+
+  .pandoc-table {
+    width: 100%;
+  }
+
+  .pandoc-table>caption {
+    margin-bottom: 10px;
+  }
+
+  .pandoc-table th:not([align]) {
+    text-align: left;
+  }
+
+  .pagedtable-footer {
+    font-size: 15px;
+  }
+
+  d-byline .byline {
+    grid-template-columns: 2fr 2fr;
+  }
+
+  d-byline .byline h3 {
+    margin-block-start: 1.5em;
+  }
+
+  d-byline .byline .authors-affiliations h3 {
+    margin-block-start: 0.5em;
+  }
+
+  .authors-affiliations .orcid-id {
+    width: 16px;
+    height:16px;
+    margin-left: 4px;
+    margin-right: 4px;
+    vertical-align: middle;
+    padding-bottom: 2px;
+  }
+
+  d-title .dt-tags {
+    margin-top: 1em;
+    grid-column: text;
+  }
+
+  .dt-tags .dt-tag {
+    text-decoration: none;
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0em 0.4em;
+    margin-right: 0.5em;
+    margin-bottom: 0.4em;
+    font-size: 70%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  d-article table.gt_table td,
+  d-article table.gt_table th {
+    border-bottom: none;
+    font-size: 100%;
+  }
+
+  .html-widget {
+    margin-bottom: 2.0em;
+  }
+
+  .l-screen-inset {
+    padding-right: 16px;
+  }
+
+  .l-screen .caption {
+    margin-left: 10px;
+  }
+
+  .shaded {
+    background: rgb(247, 247, 247);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .html-widget {
+    margin-bottom: 0;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .shaded .shaded-content {
+    background: white;
+  }
+
+  .text-output {
+    margin-top: 0;
+    line-height: 1.5em;
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  hr.section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin: 0px;
+  }
+
+
+  d-byline {
+    border-top: none;
+  }
+
+  d-article {
+    padding-top: 2.5rem;
+    padding-bottom: 30px;
+    border-top: none;
+  }
+
+  d-appendix {
+    padding-top: 30px;
+  }
+
+  d-article>p>img {
+    width: 100%;
+  }
+
+  d-article h2 {
+    margin: 1rem 0 1.5rem 0;
+  }
+
+  d-article h3 {
+    margin-top: 1.5rem;
+  }
+
+  d-article iframe {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-bottom: 2.0em;
+    width: 100%;
+  }
+
+  /* Tweak code blocks */
+
+  d-article div.sourceCode code,
+  d-article pre code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: auto;
+  }
+
+  d-article div.sourceCode {
+    background-color: white;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 10px;
+    font-size: 12px;
+    border-left: 2px solid rgba(0,0,0,0.1);
+  }
+
+  d-article pre {
+    font-size: 12px;
+    color: black;
+    background: none;
+    margin-top: 0;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  d-article pre a {
+    border-bottom: none;
+  }
+
+  d-article pre a:hover {
+    border-bottom: none;
+    text-decoration: underline;
+  }
+
+  d-article details {
+    grid-column: text;
+    margin-bottom: 0.8em;
+  }
+
+  @media(min-width: 768px) {
+
+  d-article pre,
+  d-article div.sourceCode,
+  d-article div.sourceCode pre {
+    overflow: visible !important;
+  }
+
+  d-article div.sourceCode pre {
+    padding-left: 18px;
+    font-size: 14px;
+  }
+
+  /* tweak for Pandoc numbered line within distill */
+  d-article pre.numberSource code > span {
+      left: -2em;
+  }
+
+  d-article pre {
+    font-size: 14px;
+  }
+
+  }
+
+  figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  /* CSS for d-contents */
+
+  .d-contents {
+    grid-column: text;
+    color: rgba(0,0,0,0.8);
+    font-size: 0.9em;
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    padding-left: 0.25em;
+    justify-self: start;
+  }
+
+  @media(min-width: 1000px) {
+    .d-contents.d-contents-float {
+      height: 0;
+      grid-column-start: 1;
+      grid-column-end: 4;
+      justify-self: center;
+      padding-right: 3em;
+      padding-left: 2em;
+    }
+  }
+
+  .d-contents nav h3 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 1em;
+  }
+
+  .d-contents li {
+    list-style-type: none
+  }
+
+  .d-contents nav > ul {
+    padding-left: 0;
+  }
+
+  .d-contents ul {
+    padding-left: 1em
+  }
+
+  .d-contents nav ul li {
+    margin-top: 0.6em;
+    margin-bottom: 0.2em;
+  }
+
+  .d-contents nav a {
+    font-size: 13px;
+    border-bottom: none;
+    text-decoration: none
+    color: rgba(0, 0, 0, 0.8);
+  }
+
+  .d-contents nav a:hover {
+    text-decoration: underline solid rgba(0, 0, 0, 0.6)
+  }
+
+  .d-contents nav > ul > li > a {
+    font-weight: 600;
+  }
+
+  .d-contents nav > ul > li > ul {
+    font-weight: inherit;
+  }
+
+  .d-contents nav > ul > li > ul > li {
+    margin-top: 0.2em;
+  }
+
+
+  .d-contents nav ul {
+    margin-top: 0;
+    margin-bottom: 0.25em;
+  }
+
+  .d-article-with-toc h2:nth-child(2) {
+    margin-top: 0;
+  }
+
+
+  /* Figure */
+
+  .figure {
+    position: relative;
+    margin-bottom: 2.5em;
+    margin-top: 1.5em;
+  }
+
+  .figure .caption {
+    color: rgba(0, 0, 0, 0.6);
+    font-size: 12px;
+    line-height: 1.5em;
+  }
+
+  .figure img.external {
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 1px 8px rgba(0, 0, 0, 0.1);
+    padding: 18px;
+    box-sizing: border-box;
+  }
+
+  .figure .caption a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  .figure .caption b,
+  .figure .caption strong, {
+    font-weight: 600;
+    color: rgba(0, 0, 0, 1.0);
+  }
+
+  /* Citations */
+
+  d-article .citation {
+    color: inherit;
+    cursor: inherit;
+  }
+
+  div.hanging-indent{
+    margin-left: 1em; text-indent: -1em;
+  }
+
+  /* Citation hover box */
+
+  .tippy-box[data-theme~=light-border] {
+    background-color: rgba(250, 250, 250, 0.95);
+  }
+
+  .tippy-content > p {
+    margin-bottom: 0;
+    padding: 2px;
+  }
+
+
+  /* Tweak 1000px media break to show more text */
+
+  @media(min-width: 1000px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 80px [middle-start] 50px [text-start kicker-end] 65px 65px 65px 65px 65px 65px 65px 65px [text-end gutter-start] 65px [middle-end] 65px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 16px;
+    }
+
+    .grid {
+      grid-column-gap: 16px;
+    }
+
+    d-article {
+      font-size: 1.06rem;
+      line-height: 1.7em;
+    }
+    figure .caption, .figure .caption, figure figcaption {
+      font-size: 13px;
+    }
+  }
+
+  @media(min-width: 1180px) {
+    .base-grid,
+    distill-header,
+    d-title,
+    d-abstract,
+    d-article,
+    d-appendix,
+    distill-appendix,
+    d-byline,
+    d-footnote-list,
+    d-citation-list,
+    distill-footer {
+      grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+      grid-column-gap: 32px;
+    }
+
+    .grid {
+      grid-column-gap: 32px;
+    }
+  }
+
+
+  /* Get the citation styles for the appendix (not auto-injected on render since
+     we do our own rendering of the citation appendix) */
+
+  d-appendix .citation-appendix,
+  .d-appendix .citation-appendix {
+    font-size: 11px;
+    line-height: 15px;
+    border-left: 1px solid rgba(0, 0, 0, 0.1);
+    padding-left: 18px;
+    border: 1px solid rgba(0,0,0,0.1);
+    background: rgba(0, 0, 0, 0.02);
+    padding: 10px 18px;
+    border-radius: 3px;
+    color: rgba(150, 150, 150, 1);
+    overflow: hidden;
+    margin-top: -12px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  /* Include appendix styles here so they can be overridden */
+
+  d-appendix {
+    contain: layout style;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-top: 60px;
+    margin-bottom: 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgba(0,0,0,0.5);
+    padding-top: 60px;
+    padding-bottom: 48px;
+  }
+
+  d-appendix h3 {
+    grid-column: page-start / text-start;
+    font-size: 15px;
+    font-weight: 500;
+    margin-top: 1em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.65);
+  }
+
+  d-appendix h3 + * {
+    margin-top: 1em;
+  }
+
+  d-appendix ol {
+    padding: 0 0 0 15px;
+  }
+
+  @media (min-width: 768px) {
+    d-appendix ol {
+      padding: 0 0 0 30px;
+      margin-left: -30px;
+    }
+  }
+
+  d-appendix li {
+    margin-bottom: 1em;
+  }
+
+  d-appendix a {
+    color: rgba(0, 0, 0, 0.6);
+  }
+
+  d-appendix > * {
+    grid-column: text;
+  }
+
+  d-appendix > d-footnote-list,
+  d-appendix > d-citation-list,
+  d-appendix > distill-appendix {
+    grid-column: screen;
+  }
+
+  /* Include footnote styles here so they can be overridden */
+
+  d-footnote-list {
+    contain: layout style;
+  }
+
+  d-footnote-list > * {
+    grid-column: text;
+  }
+
+  d-footnote-list a.footnote-backlink {
+    color: rgba(0,0,0,0.3);
+    padding-left: 0.5em;
+  }
+
+
+
+  /* Anchor.js */
+
+  .anchorjs-link {
+    /*transition: all .25s linear; */
+    text-decoration: none;
+    border-bottom: none;
+  }
+  *:hover > .anchorjs-link {
+    margin-left: -1.125em !important;
+    text-decoration: none;
+    border-bottom: none;
+  }
+
+  /* Social footer */
+
+  .social_footer {
+    margin-top: 30px;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.67);
+  }
+
+  .disqus-comments {
+    margin-right: 30px;
+  }
+
+  .disqus-comment-count {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+  #disqus_thread {
+    margin-top: 30px;
+  }
+
+  .article-sharing a {
+    border-bottom: none;
+    margin-right: 8px;
+  }
+
+  .article-sharing a:hover {
+    border-bottom: none;
+  }
+
+  .sidebar-section.subscribe {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .subscribe p {
+    margin-bottom: 0.5em;
+  }
+
+
+  .article-footer .subscribe {
+    font-size: 15px;
+    margin-top: 45px;
+  }
+
+
+  .sidebar-section.custom {
+    font-size: 12px;
+    line-height: 1.6em;
+  }
+
+  .custom p {
+    margin-bottom: 0.5em;
+  }
+
+  /* Styles for listing layout (hide title) */
+  .layout-listing d-title, .layout-listing .d-title {
+    display: none;
+  }
+
+  /* Styles for posts lists (not auto-injected) */
+
+
+  .posts-with-sidebar {
+    padding-left: 45px;
+    padding-right: 45px;
+  }
+
+  .posts-list .description h2,
+  .posts-list .description p {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .posts-list .description h2 {
+    font-weight: 700;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .posts-list h2.post-tag {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding-bottom: 12px;
+  }
+  .posts-list {
+    margin-top: 60px;
+    margin-bottom: 24px;
+  }
+
+  .posts-list .post-preview {
+    text-decoration: none;
+    overflow: hidden;
+    display: block;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 24px 0;
+  }
+
+  .post-preview-last {
+    border-bottom: none !important;
+  }
+
+  .posts-list .posts-list-caption {
+    grid-column: screen;
+    font-weight: 400;
+  }
+
+  .posts-list .post-preview h2 {
+    margin: 0 0 6px 0;
+    line-height: 1.2em;
+    font-style: normal;
+    font-size: 24px;
+  }
+
+  .posts-list .post-preview p {
+    margin: 0 0 12px 0;
+    line-height: 1.4em;
+    font-size: 16px;
+  }
+
+  .posts-list .post-preview .thumbnail {
+    box-sizing: border-box;
+    margin-bottom: 24px;
+    position: relative;
+    max-width: 500px;
+  }
+  .posts-list .post-preview img {
+    width: 100%;
+    display: block;
+  }
+
+  .posts-list .metadata {
+    font-size: 12px;
+    line-height: 1.4em;
+    margin-bottom: 18px;
+  }
+
+  .posts-list .metadata > * {
+    display: inline-block;
+  }
+
+  .posts-list .metadata .publishedDate {
+    margin-right: 2em;
+  }
+
+  .posts-list .metadata .dt-authors {
+    display: block;
+    margin-top: 0.3em;
+    margin-right: 2em;
+  }
+
+  .posts-list .dt-tags {
+    display: block;
+    line-height: 1em;
+  }
+
+  .posts-list .dt-tags .dt-tag {
+    display: inline-block;
+    color: rgba(0,0,0,0.6);
+    padding: 0.3em 0.4em;
+    margin-right: 0.2em;
+    margin-bottom: 0.4em;
+    font-size: 60%;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .posts-list img {
+    opacity: 1;
+  }
+
+  .posts-list img[data-src] {
+    opacity: 0;
+  }
+
+  .posts-more {
+    clear: both;
+  }
+
+
+  .posts-sidebar {
+    font-size: 16px;
+  }
+
+  .posts-sidebar h3 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 0.5em;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+
+  .sidebar-section {
+    margin-bottom: 30px;
+  }
+
+  .categories ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .categories li {
+    color: rgba(0, 0, 0, 0.8);
+    margin-bottom: 0;
+  }
+
+  .categories li>a {
+    border-bottom: none;
+  }
+
+  .categories li>a:hover {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  }
+
+  .categories .active {
+    font-weight: 600;
+  }
+
+  .categories .category-count {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+
+  @media(min-width: 768px) {
+    .posts-list .post-preview h2 {
+      font-size: 26px;
+    }
+    .posts-list .post-preview .thumbnail {
+      float: right;
+      width: 30%;
+      margin-bottom: 0;
+    }
+    .posts-list .post-preview .description {
+      float: left;
+      width: 45%;
+    }
+    .posts-list .post-preview .metadata {
+      float: left;
+      width: 20%;
+      margin-top: 8px;
+    }
+    .posts-list .post-preview p {
+      margin: 0 0 12px 0;
+      line-height: 1.5em;
+      font-size: 16px;
+    }
+    .posts-with-sidebar .posts-list {
+      float: left;
+      width: 75%;
+    }
+    .posts-with-sidebar .posts-sidebar {
+      float: right;
+      width: 20%;
+      margin-top: 60px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+    }
+  }
+
+
+  /* Improve display for browsers without grid (IE/Edge <= 15) */
+
+  .downlevel {
+    line-height: 1.6em;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", Arial, sans-serif;
+    margin: 0;
+  }
+
+  .downlevel .d-title {
+    padding-top: 6rem;
+    padding-bottom: 1.5rem;
+  }
+
+  .downlevel .d-title h1 {
+    font-size: 50px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0.5rem;
+  }
+
+  .downlevel .d-title p {
+    font-weight: 300;
+    font-size: 1.2rem;
+    line-height: 1.55em;
+    margin-top: 0;
+  }
+
+  .downlevel .d-byline {
+    padding-top: 0.8em;
+    padding-bottom: 0.8em;
+    font-size: 0.8rem;
+    line-height: 1.8em;
+  }
+
+  .downlevel .section-separator {
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  .downlevel .d-article {
+    font-size: 1.06rem;
+    line-height: 1.7em;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+
+
+  .downlevel .d-appendix {
+    padding-left: 0;
+    padding-right: 0;
+    max-width: none;
+    font-size: 0.8em;
+    line-height: 1.7em;
+    margin-bottom: 0;
+    color: rgba(0,0,0,0.5);
+    padding-top: 40px;
+    padding-bottom: 48px;
+  }
+
+  .downlevel .footnotes ol {
+    padding-left: 13px;
+  }
+
+  .downlevel .base-grid,
+  .downlevel .distill-header,
+  .downlevel .d-title,
+  .downlevel .d-abstract,
+  .downlevel .d-article,
+  .downlevel .d-appendix,
+  .downlevel .distill-appendix,
+  .downlevel .d-byline,
+  .downlevel .d-footnote-list,
+  .downlevel .d-citation-list,
+  .downlevel .distill-footer,
+  .downlevel .appendix-bottom,
+  .downlevel .posts-container {
+    padding-left: 40px;
+    padding-right: 40px;
+  }
+
+  @media(min-width: 768px) {
+    .downlevel .base-grid,
+    .downlevel .distill-header,
+    .downlevel .d-title,
+    .downlevel .d-abstract,
+    .downlevel .d-article,
+    .downlevel .d-appendix,
+    .downlevel .distill-appendix,
+    .downlevel .d-byline,
+    .downlevel .d-footnote-list,
+    .downlevel .d-citation-list,
+    .downlevel .distill-footer,
+    .downlevel .appendix-bottom,
+    .downlevel .posts-container {
+    padding-left: 150px;
+    padding-right: 150px;
+    max-width: 900px;
+  }
+  }
+
+  .downlevel pre code {
+    display: block;
+    border-left: 2px solid rgba(0, 0, 0, .1);
+    padding: 0 0 0 20px;
+    font-size: 14px;
+  }
+
+  .downlevel code, .downlevel pre {
+    color: black;
+    background: none;
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+    text-align: left;
+    white-space: pre;
+    word-spacing: normal;
+    word-break: normal;
+    word-wrap: normal;
+    line-height: 1.5;
+
+    -moz-tab-size: 4;
+    -o-tab-size: 4;
+    tab-size: 4;
+
+    -webkit-hyphens: none;
+    -moz-hyphens: none;
+    -ms-hyphens: none;
+    hyphens: none;
+  }
+
+  .downlevel .posts-list .post-preview {
+    color: inherit;
+  }
+
+
+
+  </style>
+
+  <script type="application/javascript">
+
+  function is_downlevel_browser() {
+    if (bowser.isUnsupportedBrowser({ msie: "12", msedge: "16"},
+                                   window.navigator.userAgent)) {
+      return true;
+    } else {
+      return window.load_distill_framework === undefined;
+    }
+  }
+
+  // show body when load is complete
+  function on_load_complete() {
+
+    // add anchors
+    if (window.anchors) {
+      window.anchors.options.placement = 'left';
+      window.anchors.add('d-article > h2, d-article > h3, d-article > h4, d-article > h5');
+    }
+
+
+    // set body to visible
+    document.body.style.visibility = 'visible';
+
+    // force redraw for leaflet widgets
+    if (window.HTMLWidgets) {
+      var maps = window.HTMLWidgets.findAll(".leaflet");
+      $.each(maps, function(i, el) {
+        var map = this.getMap();
+        map.invalidateSize();
+        map.eachLayer(function(layer) {
+          if (layer instanceof L.TileLayer)
+            layer.redraw();
+        });
+      });
+    }
+
+    // trigger 'shown' so htmlwidgets resize
+    $('d-article').trigger('shown');
+  }
+
+  function init_distill() {
+
+    init_common();
+
+    // create front matter
+    var front_matter = $('<d-front-matter></d-front-matter>');
+    $('#distill-front-matter').wrap(front_matter);
+
+    // create d-title
+    $('.d-title').changeElementType('d-title');
+
+    // separator
+    var separator = '<hr class="section-separator" style="clear: both"/>';
+    // prepend separator above appendix
+    $('.d-byline').before(separator);
+    $('.d-article').before(separator);
+
+    // create d-byline
+    var byline = $('<d-byline></d-byline>');
+    $('.d-byline').replaceWith(byline);
+
+    // create d-article
+    var article = $('<d-article></d-article>');
+    $('.d-article').wrap(article).children().unwrap();
+
+    // move posts container into article
+    $('.posts-container').appendTo($('d-article'));
+
+    // create d-appendix
+    $('.d-appendix').changeElementType('d-appendix');
+
+    // flag indicating that we have appendix items
+    var appendix = $('.appendix-bottom').children('h3').length > 0;
+
+    // replace footnotes with <d-footnote>
+    $('.footnote-ref').each(function(i, val) {
+      appendix = true;
+      var href = $(this).attr('href');
+      var id = href.replace('#', '');
+      var fn = $('#' + id);
+      var fn_p = $('#' + id + '>p');
+      fn_p.find('.footnote-back').remove();
+      var text = fn_p.html();
+      var dtfn = $('<d-footnote></d-footnote>');
+      dtfn.html(text);
+      $(this).replaceWith(dtfn);
+    });
+    // remove footnotes
+    $('.footnotes').remove();
+
+    // move refs into #references-listing
+    $('#references-listing').replaceWith($('#refs'));
+
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      var id = $(this).attr('id');
+      $('.d-contents a[href="#' + id + '"]').parent().remove();
+      appendix = true;
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('d-appendix'));
+    });
+
+    // show d-appendix if we have appendix content
+    $("d-appendix").css('display', appendix ? 'grid' : 'none');
+
+    // localize layout chunks to just output
+    $('.layout-chunk').each(function(i, val) {
+
+      // capture layout
+      var layout = $(this).attr('data-layout');
+
+      // apply layout to markdown level block elements
+      var elements = $(this).children().not('details, div.sourceCode, pre, script');
+      elements.each(function(i, el) {
+        var layout_div = $('<div class="' + layout + '"></div>');
+        if (layout_div.hasClass('shaded')) {
+          var shaded_content = $('<div class="shaded-content"></div>');
+          $(this).wrap(shaded_content);
+          $(this).parent().wrap(layout_div);
+        } else {
+          $(this).wrap(layout_div);
+        }
+      });
+
+
+      // unwrap the layout-chunk div
+      $(this).children().unwrap();
+    });
+
+    // remove code block used to force  highlighting css
+    $('.distill-force-highlighting-css').parent().remove();
+
+    // remove empty line numbers inserted by pandoc when using a
+    // custom syntax highlighting theme, except when numbering line
+    // in code chunk
+    $('pre:not(.numberLines) code.sourceCode a:empty').remove();
+
+    // load distill framework
+    load_distill_framework();
+
+    // wait for window.distillRunlevel == 4 to do post processing
+    function distill_post_process() {
+
+      if (!window.distillRunlevel || window.distillRunlevel < 4)
+        return;
+
+      // hide author/affiliations entirely if we have no authors
+      var front_matter = JSON.parse($("#distill-front-matter").html());
+      var have_authors = front_matter.authors && front_matter.authors.length > 0;
+      if (!have_authors)
+        $('d-byline').addClass('hidden');
+
+      // article with toc class
+      $('.d-contents').parent().addClass('d-article-with-toc');
+
+      // strip links that point to #
+      $('.authors-affiliations').find('a[href="#"]').removeAttr('href');
+
+      // add orcid ids
+      $('.authors-affiliations').find('.author').each(function(i, el) {
+        var orcid_id = front_matter.authors[i].orcidID;
+        var author_name = front_matter.authors[i].author
+        if (orcid_id) {
+          var a = $('<a></a>');
+          a.attr('href', 'https://orcid.org/' + orcid_id);
+          var img = $('<img></img>');
+          img.addClass('orcid-id');
+          img.attr('alt', author_name ? 'ORCID ID for ' + author_name : 'ORCID ID');
+          img.attr('src','data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==');
+          a.append(img);
+          $(this).append(a);
+        }
+      });
+
+      // hide elements of author/affiliations grid that have no value
+      function hide_byline_column(caption) {
+        $('d-byline').find('h3:contains("' + caption + '")').parent().css('visibility', 'hidden');
+      }
+
+      // affiliations
+      var have_affiliations = false;
+      for (var i = 0; i<front_matter.authors.length; ++i) {
+        var author = front_matter.authors[i];
+        if (author.affiliation !== "&nbsp;") {
+          have_affiliations = true;
+          break;
+        }
+      }
+      if (!have_affiliations)
+        $('d-byline').find('h3:contains("Affiliations")').css('visibility', 'hidden');
+
+      // published date
+      if (!front_matter.publishedDate)
+        hide_byline_column("Published");
+
+      // document object identifier
+      var doi = $('d-byline').find('h3:contains("DOI")');
+      var doi_p = doi.next().empty();
+      if (!front_matter.doi) {
+        // if we have a citation and valid citationText then link to that
+        if ($('#citation').length > 0 && front_matter.citationText) {
+          doi.html('Citation');
+          $('<a href="#citation"></a>')
+            .text(front_matter.citationText)
+            .appendTo(doi_p);
+        } else {
+          hide_byline_column("DOI");
+        }
+      } else {
+        $('<a></a>')
+           .attr('href', "https://doi.org/" + front_matter.doi)
+           .html(front_matter.doi)
+           .appendTo(doi_p);
+      }
+
+       // change plural form of authors/affiliations
+      if (front_matter.authors.length === 1) {
+        var grid = $('.authors-affiliations');
+        grid.children('h3:contains("Authors")').text('Author');
+        grid.children('h3:contains("Affiliations")').text('Affiliation');
+      }
+
+      // remove d-appendix and d-footnote-list local styles
+      $('d-appendix > style:first-child').remove();
+      $('d-footnote-list > style:first-child').remove();
+
+      // move appendix-bottom entries to the bottom
+      $('.appendix-bottom').appendTo('d-appendix').children().unwrap();
+      $('.appendix-bottom').remove();
+
+      // hoverable references
+      $('span.citation[data-cites]').each(function() {
+        const citeChild = $(this).children()[0]
+        // Do not process if @xyz has been used without escaping and without bibliography activated
+        // https://github.com/rstudio/distill/issues/466
+        if (citeChild === undefined) return true
+
+        if (citeChild.nodeName == "D-FOOTNOTE") {
+          var fn = citeChild
+          $(this).html(fn.shadowRoot.querySelector("sup"))
+          $(this).id = fn.id
+          fn.remove()
+        }
+        var refs = $(this).attr('data-cites').split(" ");
+        var refHtml = refs.map(function(ref) {
+          // Could use CSS.escape too here, we insure backward compatibility in navigator
+          return "<p>" + $('div[id="ref-' + ref + '"]').html() + "</p>";
+        }).join("\n");
+        window.tippy(this, {
+          allowHTML: true,
+          content: refHtml,
+          maxWidth: 500,
+          interactive: true,
+          interactiveBorder: 10,
+          theme: 'light-border',
+          placement: 'bottom-start'
+        });
+      });
+
+      // fix footnotes in tables (#411)
+      // replacing broken distill.pub feature
+      $('table d-footnote').each(function() {
+        // we replace internal showAtNode methode which is triggered when hovering a footnote
+        this.hoverBox.showAtNode = function(node) {
+          // ported from https://github.com/distillpub/template/pull/105/files
+          calcOffset = function(elem) {
+              let x = elem.offsetLeft;
+              let y = elem.offsetTop;
+              // Traverse upwards until an `absolute` element is found or `elem`
+              // becomes null.
+              while (elem = elem.offsetParent && elem.style.position != 'absolute') {
+                  x += elem.offsetLeft;
+                  y += elem.offsetTop;
+              }
+
+              return { left: x, top: y };
+          }
+          // https://developer.mozilla.org/en-US/docs/Web/API/HTMLElement/offsetTop
+          const bbox = node.getBoundingClientRect();
+          const offset = calcOffset(node);
+          this.show([offset.left + bbox.width, offset.top + bbox.height]);
+        }
+      })
+
+      // clear polling timer
+      clearInterval(tid);
+
+      // show body now that everything is ready
+      on_load_complete();
+    }
+
+    var tid = setInterval(distill_post_process, 50);
+    distill_post_process();
+
+  }
+
+  function init_downlevel() {
+
+    init_common();
+
+     // insert hr after d-title
+    $('.d-title').after($('<hr class="section-separator"/>'));
+
+    // check if we have authors
+    var front_matter = JSON.parse($("#distill-front-matter").html());
+    var have_authors = front_matter.authors && front_matter.authors.length > 0;
+
+    // manage byline/border
+    if (!have_authors)
+      $('.d-byline').remove();
+    $('.d-byline').after($('<hr class="section-separator"/>'));
+    $('.d-byline a').remove();
+
+    // remove toc
+    $('.d-contents').remove();
+
+    // move appendix elements
+    $('h1.appendix, h2.appendix').each(function(i, val) {
+      $(this).changeElementType('h3');
+    });
+    $('h3.appendix').each(function(i, val) {
+      $(this).nextUntil($('h1, h2, h3')).addBack().appendTo($('.d-appendix'));
+    });
+
+
+    // inject headers into references and footnotes
+    var refs_header = $('<h3></h3>');
+    refs_header.text('References');
+    $('#refs').prepend(refs_header);
+
+    var footnotes_header = $('<h3></h3');
+    footnotes_header.text('Footnotes');
+    $('.footnotes').children('hr').first().replaceWith(footnotes_header);
+
+    // move appendix-bottom entries to the bottom
+    $('.appendix-bottom').appendTo('.d-appendix').children().unwrap();
+    $('.appendix-bottom').remove();
+
+    // remove appendix if it's empty
+    if ($('.d-appendix').children().length === 0)
+      $('.d-appendix').remove();
+
+    // prepend separator above appendix
+    $('.d-appendix').before($('<hr class="section-separator" style="clear: both"/>'));
+
+    // trim code
+    $('pre>code').each(function(i, val) {
+      $(this).html($.trim($(this).html()));
+    });
+
+    // move posts-container right before article
+    $('.posts-container').insertBefore($('.d-article'));
+
+    $('body').addClass('downlevel');
+
+    on_load_complete();
+  }
+
+
+  function init_common() {
+
+    // jquery plugin to change element types
+    (function($) {
+      $.fn.changeElementType = function(newType) {
+        var attrs = {};
+
+        $.each(this[0].attributes, function(idx, attr) {
+          attrs[attr.nodeName] = attr.nodeValue;
+        });
+
+        this.replaceWith(function() {
+          return $("<" + newType + "/>", attrs).append($(this).contents());
+        });
+      };
+    })(jQuery);
+
+    // prevent underline for linked images
+    $('a > img').parent().css({'border-bottom' : 'none'});
+
+    // mark non-body figures created by knitr chunks as 100% width
+    $('.layout-chunk').each(function(i, val) {
+      var figures = $(this).find('img, .html-widget');
+      // ignore leaflet img layers (#106)
+      figures = figures.filter(':not(img[class*="leaflet"])')
+      if ($(this).attr('data-layout') !== "l-body") {
+        figures.css('width', '100%');
+      } else {
+        figures.css('max-width', '100%');
+        figures.filter("[width]").each(function(i, val) {
+          var fig = $(this);
+          fig.css('width', fig.attr('width') + 'px');
+        });
+
+      }
+    });
+
+    // auto-append index.html to post-preview links in file: protocol
+    // and in rstudio ide preview
+    $('.post-preview').each(function(i, val) {
+      if (window.location.protocol === "file:")
+        $(this).attr('href', $(this).attr('href') + "index.html");
+    });
+
+    // get rid of index.html references in header
+    if (window.location.protocol !== "file:") {
+      $('.distill-site-header a[href]').each(function(i,val) {
+        $(this).attr('href', $(this).attr('href').replace(/^index[.]html/, "./"));
+      });
+    }
+
+    // add class to pandoc style tables
+    $('tr.header').parent('thead').parent('table').addClass('pandoc-table');
+    $('.kable-table').children('table').addClass('pandoc-table');
+
+    // add figcaption style to table captions
+    $('caption').parent('table').addClass("figcaption");
+
+    // initialize posts list
+    if (window.init_posts_list)
+      window.init_posts_list();
+
+    // implmement disqus comment link
+    $('.disqus-comment-count').click(function() {
+      window.headroom_prevent_pin = true;
+      $('#disqus_thread').toggleClass('hidden');
+      if (!$('#disqus_thread').hasClass('hidden')) {
+        var offset = $(this).offset();
+        $(window).resize();
+        $('html, body').animate({
+          scrollTop: offset.top - 35
+        });
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    if (is_downlevel_browser())
+      init_downlevel();
+    else
+      window.addEventListener('WebComponentsReady', init_distill);
+  });
+
+  </script>
+
+  <!--/radix_placeholder_distill-->
+  <script src="tutorial_files/header-attrs-2.28/header-attrs.js"></script>
+  <script src="tutorial_files/clipboard-2.0.6/clipboard.min.js"></script>
+  <link href="tutorial_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+  <script src="tutorial_files/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+  <script>window.xaringanExtraClipboard(null, {"button":"Copy Code","success":"Copied!","error":"Press Ctrl+C to Copy"})</script>
+  <script src="tutorial_files/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+  <script src="tutorial_files/popper-2.6.0/popper.min.js"></script>
+  <link href="tutorial_files/tippy-6.2.7/tippy.css" rel="stylesheet" />
+  <link href="tutorial_files/tippy-6.2.7/tippy-light-border.css" rel="stylesheet" />
+  <script src="tutorial_files/tippy-6.2.7/tippy.umd.min.js"></script>
+  <script src="tutorial_files/anchor-4.2.2/anchor.min.js"></script>
+  <script src="tutorial_files/bowser-1.9.3/bowser.min.js"></script>
+  <script src="tutorial_files/webcomponents-2.0.0/webcomponents.js"></script>
+  <script src="tutorial_files/distill-2.2.21/template.v2.js"></script>
+  <!--radix_placeholder_site_in_header-->
+  <!--/radix_placeholder_site_in_header-->
+
+
+</head>
+
+<body>
+
+<!--radix_placeholder_front_matter-->
+
+<script id="distill-front-matter" type="text/json">
+{"title":"Introduction to R: Tutorial","description":"This post serves as the primary tutorial notes for the \"Introduction to R\" sessions of the Intensive Statistics course for MCom (Economics) students at Stellenbosch University (2024). This lecture is intended to offer a cursory introduction to enable students to perform basic operations in R and RStudio.","authors":[],"publishedDate":"2024-01-23T00:00:00.000+02:00"}
+</script>
+
+<!--/radix_placeholder_front_matter-->
+<!--radix_placeholder_navigation_before_body-->
+<!--/radix_placeholder_navigation_before_body-->
+<!--radix_placeholder_site_before_body-->
+<!--/radix_placeholder_site_before_body-->
+
+<div class="d-title">
+<h1>Introduction to R: Tutorial</h1>
+
+<!--radix_placeholder_categories-->
+<!--/radix_placeholder_categories-->
+<p><p>This post serves as the primary tutorial notes for the “Introduction to R” sessions of the Intensive Statistics course for MCom (Economics) students at Stellenbosch University (2024). This lecture is intended to offer a cursory introduction to enable students to perform basic operations in R and RStudio.</p></p>
+</div>
+
+
+<div class="d-article">
+<div class="d-contents d-contents-float">
+<nav class="l-text toc figcaption" id="TOC">
+<h3>Contents</h3>
+<ul>
+<li><a href="#why-r" id="toc-why-r">Why R?</a></li>
+<li><a href="#setup" id="toc-setup">Setup</a></li>
+<li><a href="#basics" id="toc-basics">Basics</a>
+<ul>
+<li><a href="#packages" id="toc-packages">Packages</a></li>
+<li><a href="#environment" id="toc-environment">Environment</a></li>
+<li><a href="#arrays" id="toc-arrays">Arrays</a></li>
+<li><a href="#data-frames" id="toc-data-frames">Data frames</a></li>
+<li><a href="#reading-data" id="toc-reading-data">Reading data</a></li>
+<li><a href="#manipulating" id="toc-manipulating">Manipulating data</a></li>
+<li><a href="#writing-data" id="toc-writing-data">Writing data</a></li>
+</ul></li>
+<li><a href="#time-series-analysis" id="toc-time-series-analysis">Time series analysis</a>
+<ul>
+<li><a href="#visualising-time-series" id="toc-visualising-time-series">Visualising time series</a></li>
+<li><a href="#autocorrelation" id="toc-autocorrelation">Autocorrelation</a></li>
+<li><a href="#unit-root-tests" id="toc-unit-root-tests">Unit root tests</a></li>
+</ul></li>
+<li><a href="#cross-section-analysis" id="toc-cross-section-analysis">Cross section analysis</a>
+<ul>
+<li><a href="#descriptive-statistics" id="toc-descriptive-statistics">Descriptive statistics</a></li>
+<li><a href="#regressions" id="toc-regressions">Regressions</a></li>
+<li><a href="#visualising-results" id="toc-visualising-results">Visualising results</a></li>
+<li><a href="#interaction-effects" id="toc-interaction-effects">Interaction effects</a></li>
+</ul></li>
+<li><a href="#end" id="toc-end">End</a></li>
+<li><a href="#acknowledgements" id="toc-acknowledgements">Acknowledgements</a></li>
+<li><a href="#further-reading" id="toc-further-reading">Further Reading</a></li>
+</ul>
+</nav>
+</div>
+<div class="layout-chunk" data-layout="l-body">
+
+</div>
+<h2 id="why-r">Why R?</h2>
+<ol type="1">
+<li><p>R is <strong>open-source</strong>.</p>
+<ul>
+<li><p>Free updates and dissemination.</p></li>
+<li><p>Widespread availability of helpful resources like <a href="https://stackoverflow.com/questions/tagged/r">stackoverflow</a>.</p></li>
+</ul></li>
+<li><p>R uses <strong>packages</strong>.</p>
+<ul>
+<li>R consists of Base-R coupled with third-party libraries of pre-written code, or packages. You not need to reinvent the wheel.</li>
+</ul></li>
+<li><p>R uses <strong>predictive coding</strong> (<code>Ctrl/Cmd + Space</code> is very useful).</p></li>
+</ol>
+<center>
+<img src="../images/pred_text.png" style="width:75.0%" />
+</center>
+<ol start="4" type="1">
+<li><p>R is compatible with <strong>Markdown</strong>.</p>
+<ul>
+<li><p>Author, connect to data, and run code in <strong>R Markdown</strong>, RStudio’s native authoring framework for data science.</p></li>
+<li><p>See this <a href="https://rmarkdown.rstudio.com/lesson-1.html">1-minute video summary</a> of what R Markdown entails.</p></li>
+</ul></li>
+</ol>
+<h2 id="setup">Setup</h2>
+<p>Before you start, please proceed with the following steps, and download and install the necessary software on your machine:</p>
+<ol type="1">
+<li><a href="https://cran.r-project.org/">R</a> (The programming language you will be using)</li>
+</ol>
+<blockquote>
+<p>“R is a freely available language and environment for statistical computing and graphics which provides a wide variety of statistical and graphical techniques: linear and nonlinear modelling, statistical tests, time series analysis, classification, clustering, etc.”</p>
+</blockquote>
+<p>Select the appropriate link corresponding to your machine’s operating system and follow the subsequent instructions:</p>
+<center>
+<img src="../images/r_install.png" style="width:100.0%" />
+</center>
+<p>Execute the newly downloaded <code>R-4.3.2-win.exe</code> file and follow the instructions. If you encounter any difficulties, please ask for help!</p>
+<ol start="2" type="1">
+<li><a href="https://posit.co/download/rstudio-desktop/">RStudio Desktop</a> (The program you will be using to interface with the <code>R</code> code)</li>
+</ol>
+<blockquote>
+<p>“RStudio is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management.”</p>
+</blockquote>
+<center>
+<img src="../images/rstudio_install.png" style="width:40.0%" />
+</center>
+<p>Once you have completed downloading and installing <code>R</code>, do the same for RStudio. Execute the newly downloaded <code>RStudio-2023.12.0-369.exe</code> file and follow the instructions that follow.</p>
+<ol start="3" type="1">
+<li>After completing Steps 1 and 2, open up RStudio. It should look something like this:</li>
+</ol>
+<center>
+<figure>
+<img src="../images/default_rstudio.png" style="width:100.0%" alt="This is the default RStudio Desktop workspace. The Console is on the left, the Environment pane is top-right and the Files pane is bottom-right. You can change the layout of your workspace in the taskbar with View &gt; Panes &gt; Pane Layout. You can change the aesthetics of your workspace in the taskbar with Tools &gt; Global Options &gt; Appearance." />
+<figcaption aria-hidden="true">This is the default RStudio Desktop workspace. The Console is on the left, the Environment pane is top-right and the Files pane is bottom-right. You can change the layout of your workspace in the taskbar with <code>View</code> &gt; <code>Panes</code> &gt; <code>Pane Layout</code>. You can change the aesthetics of your workspace in the taskbar with <code>Tools</code> &gt; <code>Global Options</code> &gt; <code>Appearance</code>.</figcaption>
+</figure>
+</center>
+<ol start="4" type="1">
+<li><code>File</code> &gt; <code>New Project</code> &gt; <code>New directory</code> &gt; <code>New project</code> &gt; <code>Choose directory location and name</code><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></li>
+</ol>
+<p>It is advisable to work from a <code>R</code> project, as this keeps track of your most current workspace and variable environment. Its location will serve as your “root folder” or main directory for subsequent operations in the project. To work from a particular project, open a new project with <code>File</code> &gt; <code>Open Project</code> or starting your session in R Studio by clicking the relevant <code>.Rproj</code> file.</p>
+<center>
+<figure>
+<img src="../images/project_name.png" style="width:75.0%" alt="To ensure that you are working from the correct project, check whether your project’s name appears in this top right-hand corner." />
+<figcaption aria-hidden="true">To ensure that you are working from the correct project, check whether your project’s name appears in this top right-hand corner.</figcaption>
+</figure>
+</center>
+<p>Once operating from a new project, you should be faced with the default workspace, as illustrated in Step 3 above. The pane on the left is called the <strong>Console</strong>. As in <code>Stata</code>, code can be typed and executed directly in your console (or “Command” in <code>Stata</code>.)</p>
+<blockquote>
+<p><strong>Try:</strong> Enter the code <code>getwd()</code> in your console to observe the location of your <em>working directory</em>, the location of your project.</p>
+</blockquote>
+<p>Alternatively, this code can be stored in- and executed from a script or <code>.R</code> file, much like do-files in <code>Stata</code>.</p>
+<ol start="5" type="1">
+<li>Open a new script in the taskbar with <code>File</code> &gt; <code>New File</code> &gt; <code>R Script</code> or with <code>Ctrl/Cmd + Shift + N</code>. Save the <code>.R</code> file in your working directory with <code>File</code> &gt; <code>Save</code> or <code>Ctrl/Cmd + S</code>.</li>
+</ol>
+<p>After creating and saving a new script, you should observe a workspace layout like the one summarised in Table <a href="#tab:workspace">1</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<table>
+<caption><span id="tab:workspace">Table 1: </span>Workspace Layout</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Location</th>
+<th style="text-align: left;">Function</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Top left</td>
+<td style="text-align: left;">Script/RMarkdown</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Top right</td>
+<td style="text-align: left;">Global environment</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Bottom left</td>
+<td style="text-align: left;">Console</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Bottom right</td>
+<td style="text-align: left;">Files/Plots/Packages/Help</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="basics">Basics</h2>
+<p>With the software installed and operating, and your new project and script created, you are ready to get started with <code>R</code> and R Studio. Proceed by copying the code from this post, or by working from the tutorial’s corresponding master script available <a href="Handout//Intro%20to%20R%20Tutorial%20Script%20(2024).R">here</a>.</p>
+<blockquote>
+<p><strong>NB:</strong> Highlighted code in the console or script can be executed using <code>Ctrl/Cmd + Enter</code>. When working from a script, output will typically appear in the console.</p>
+</blockquote>
+<h3 id="packages">Packages</h3>
+<p>We rely on <strong>packages</strong> to access pre-written functions performing specific tasks.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> Packages can be downloaded and installed from <strong>CRAN</strong>, the official repository of packages, or <a href="https://github.com/"><strong>GitHub</strong></a>, which often acts as an repository for third-party libraries or beta-versions.</p>
+<p>Installing, loading and maintaining packages can be tedious. Packages need only be installed with <code>install.packages("x")</code> once, after which only <code>load(x)</code> is necessary.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># First install the package from CRAN</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/utils/install.packages.html'>install.packages</a></span><span class='op'>(</span><span class='st'>"pacman"</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># Load the installed package into your workspace</span></span>
+<span><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/trinker/pacman'>pacman</a></span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<p>If a package <code>x</code> has been installed already, <code>install.packages("x")</code> will produce the following error:</p>
+<center>
+<img src="../images/install_pac.png" style="width:50.0%" />
+</center>
+<p>It can be difficult to keep track of all the packages on your machine. The <code>pacman</code> package allows us to easily install and load packages from CRAN with <code>p_load()</code>, and from GitHub with <code>p_load_gh()</code>. This will install and load a new package, or merely load previously installed ones. Let’s install the packages we will be using in this tutorial.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># From CRAN</span></span>
+<span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load.html'>p_load</a></span><span class='op'>(</span><span class='va'>fixest</span>, <span class='va'>tidyverse</span>, <span class='va'>huxtable</span>, <span class='va'>modelsummary</span>, <span class='va'>glue</span>, <span class='va'>skimr</span><span class='op'>)</span> <span class='co'># or</span></span>
+<span><span class='fu'>pacman</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load.html'>p_load</a></span><span class='op'>(</span><span class='va'>fixest</span>, <span class='va'>tidyverse</span>, <span class='va'>huxtable</span>, <span class='va'>modelsummary</span>, <span class='va'>glue</span>, <span class='va'>skimr</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># From GitHub where "profile/repository name"</span></span>
+<span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load_gh.html'>p_load_gh</a></span><span class='op'>(</span><span class='st'>"BlakeRMills/MetBrewer"</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<blockquote>
+<p><strong>NB:</strong> Functions are called using the function’s name, e.g., <code>p_load()</code>, or its full name, e.g., <code>pacman::p_load()</code>. The latter is useful when functions from different packages share the same name.</p>
+</blockquote>
+<p>Directories can be viewed to the bottom-right pane, in addition to plot outputs, currently loaded packages, and help files. Should you ever require help or additional information regarding a specific command, add a <code>?</code> before that command and run the code, for example:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='op'>?</span><span class='fu'>pacman</span><span class='fu'>::</span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load.html'>p_load</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<h3 id="environment">Environment</h3>
+<p><code>R</code> is an object-orientated language. Objects of various classes (scalars, matrices, data frames, vectors, etc.) can be stored in memory for later use. Once named and saved, these objects will appear in your global environment.</p>
+<p>We use the assignment operators <code>&lt;-</code> or <code>=</code> to name and save objects.</p>
+<blockquote>
+<p><strong>Shortcut:</strong> <code>Alt/Option + Minus</code> to get <code>&lt;-</code></p>
+</blockquote>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># object name &lt;- (or =) value(s)</span></span>
+<span><span class='va'>a</span> <span class='op'>&lt;-</span> <span class='fl'>10</span></span>
+<span><span class='va'>hello</span> <span class='op'>&lt;-</span> <span class='st'>"Hello world!"</span></span>
+<span><span class='va'>test</span> <span class='op'>&lt;-</span> <span class='cn'>TRUE</span></span>
+<span></span>
+<span><span class='co'># Determine the class of an object</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>a</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] &quot;numeric&quot;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>hello</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] &quot;character&quot;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>test</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] &quot;logical&quot;</code></pre>
+</div>
+<p>By executing the relevant code, objects should appear in your global environment like this:</p>
+<center>
+<img src="../images/environment.png" style="width:50.0%" />
+</center>
+<p>Report these variables in your output by running the following:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>a</span></span></code></pre>
+</div>
+<pre><code>[1] 10</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># or</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/print.html'>print</a></span><span class='op'>(</span><span class='va'>hello</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] &quot;Hello world!&quot;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># or by using the glue package for something more fancy</span></span>
+<span><span class='fu'>glue</span><span class='fu'>::</span><span class='fu'><a href='https://glue.tidyverse.org/reference/glue.html'>glue</a></span><span class='op'>(</span><span class='st'>"It's {test}. I saved a variable which contains {hello} and I stored the number {a}."</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>It&#39;s TRUE. I saved a variable which contains Hello world! and I stored the number 10.</code></pre>
+</div>
+<h3 id="arrays">Arrays</h3>
+<p>An array object is equivalent to a vector of values from the same class. Arrays can be created by concatenating values using the function <code>c()</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>x</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='fl'>4</span><span class='op'>)</span></span>
+<span><span class='va'>y</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>5</span>, <span class='fl'>6</span>, <span class='fl'>7</span><span class='op'>)</span></span>
+<span><span class='va'>z</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>7</span>, <span class='fl'>8</span>, <span class='fl'>9</span>, <span class='fl'>10</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># Useful functions to perform on arrays/vectors</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] 10</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/Extremes.html'>min</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] 1</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/stats/median.html'>median</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] 2.5</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># summary() provides a summary of the functions above</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>x</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+   1.00    1.75    2.50    2.50    3.25    4.00 </code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Missing values denoted by NA</span></span>
+<span><span class='va'>x_with_missing</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>1</span>, <span class='fl'>2</span>, <span class='fl'>3</span>, <span class='cn'>NA</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># Take care to properly treat missing values:</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>x_with_missing</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] NA</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/sum.html'>sum</a></span><span class='op'>(</span><span class='va'>x_with_missing</span>, na.rm <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] 6</code></pre>
+</div>
+<h3 id="data-frames">Data frames</h3>
+<p>Data frames, consisting of rows and columns, are the workhorse of statistical analysis in <code>R</code>. They can be created in various ways. Rows and columns can also be named.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># data.frame() can create columns from arrays and assign column names</span></span>
+<span><span class='va'>df_1</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>A <span class='op'>=</span> <span class='va'>x</span>, B <span class='op'>=</span> <span class='va'>y</span>, C <span class='op'>=</span> <span class='va'>z</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># Some useful operations</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>df_1</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] &quot;A&quot; &quot;B&quot; &quot;C&quot;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>df_1_copy</span> <span class='op'>&lt;-</span> <span class='va'>df_1</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>df_1_copy</span><span class='op'>)</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"col1"</span>, <span class='st'>"col2"</span>, <span class='st'>"col3"</span><span class='op'>)</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>colnames</a></span><span class='op'>(</span><span class='va'>df_1_copy</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] &quot;col1&quot; &quot;col2&quot; &quot;col3&quot;</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>nrow</a></span><span class='op'>(</span><span class='va'>df_1</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] 4</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/base/nrow.html'>ncol</a></span><span class='op'>(</span><span class='va'>df_1</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] 3</code></pre>
+</div>
+<p>Specific rows, columns, and cells can be referenced as follows:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Return column "A" as a vector</span></span>
+<span><span class='va'>df_1</span><span class='op'>$</span><span class='va'>A</span></span></code></pre>
+</div>
+<pre><code>[1] 1 2 3 4</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># df_1[row no., column no.] - empty implies all</span></span>
+<span><span class='va'>df_1</span><span class='op'>[</span>, <span class='fl'>1</span><span class='op'>]</span></span></code></pre>
+</div>
+<pre><code>[1] 1 2 3 4</code></pre>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Using tidyverse's pipe operator %&gt;%</span></span>
+<span><span class='va'>df_1</span> <span class='op'>%&gt;%</span> <span class='fu'>pull</span><span class='op'>(</span><span class='va'>A</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] 1 2 3 4</code></pre>
+</div>
+<blockquote>
+<p><strong>Shortcut:</strong> <code>Ctrl/Cmd + Shift + M</code> to get %&gt;%</p>
+</blockquote>
+<p>There are numerous ways to subset a data frame.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Similarly with rows</span></span>
+<span><span class='co'># Return row 2 as a single row data frame</span></span>
+<span><span class='va'>df_1</span><span class='op'>[</span><span class='fl'>2</span>, <span class='op'>]</span></span>
+<span></span>
+<span><span class='co'># Return row 2-3 as a two row data frame</span></span>
+<span><span class='va'>df_1</span><span class='op'>[</span><span class='fl'>2</span><span class='op'>:</span><span class='fl'>3</span>, <span class='op'>]</span></span>
+<span></span>
+<span><span class='co'># Return cell in row 2 column 1</span></span>
+<span><span class='va'>df_1</span><span class='op'>[</span><span class='fl'>2</span>, <span class='fl'>1</span><span class='op'>]</span></span></code></pre>
+</div>
+</div>
+<p>Let’s create a new column named “D”:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Create a new column "D" that is the sum of A and B</span></span>
+<span><span class='va'>df_1</span><span class='op'>$</span><span class='va'>D</span> <span class='op'>&lt;-</span> <span class='va'>df_1</span><span class='op'>$</span><span class='va'>A</span> <span class='op'>+</span> <span class='va'>df_1</span><span class='op'>$</span><span class='va'>B</span></span>
+<span></span>
+<span><span class='co'># is the same as</span></span>
+<span><span class='va'>df_1</span> <span class='op'>&lt;-</span> <span class='va'>df_1</span> <span class='op'>%&gt;%</span> <span class='fu'>mutate</span><span class='op'>(</span>D <span class='op'>=</span> <span class='va'>A</span> <span class='op'>+</span> <span class='va'>B</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<h3 id="reading-data">Reading data</h3>
+<p>Data is often imported from external files, such as <code>.csv</code> files. Let’s consider an example. If you haven’t done so already, download the <code>tut_materials.zip</code> file using <a href="tut_materials.zip">this link</a>. Extract the files in the <code>.zip</code> folder and copy the <code>data</code> folder into your working directory.</p>
+<p>Instead of repeatedly reading the data from the source files, it is wise to create a data frame. Now, read the data from the <code>Ireland_energy.csv</code> file in the <code>data</code> folder using <code>read.csv()</code>, and create a data frame called <code>ire_energy</code> with an assignment operator. The data represents Ireland’s energy consumption data for 1980-2018.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ire_energy</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span>file <span class='op'>=</span> <span class='st'>"../data/Ireland_energy.csv"</span>, header <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span></span>
+<span><span class='co'># The "file" argument refers to the relative file path from your root directory</span></span>
+<span><span class='co'># The "header" argument is set to true because the .csv file contains column headings</span></span></code></pre>
+</div>
+</div>
+<p>Do the same for a corresponding file containing data on Ireland’s population from <code>Ireland_population.csv</code>, and create a data frame called <code>ire_pop</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ire_pop</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"../data/Ireland_population.csv"</span><span class='op'>)</span></span>
+<span><span class='co'># Sometimes it's unnecessary to spell out the arguments</span></span></code></pre>
+</div>
+</div>
+<center>
+<figure>
+<img src="../images/function_arguments.png" style="width:75.0%" alt="When calling your function, access the tip with Ctrl/Cmd + Space. Note the potential arguments for the particular function and some arguments’ default settings, e.g., header = TRUE." />
+<figcaption aria-hidden="true">When calling your function, access the tip with <code>Ctrl/Cmd + Space</code>. Note the potential arguments for the particular function and some arguments’ default settings, e.g., <code>header = TRUE</code>.</figcaption>
+</figure>
+</center>
+<p>We now have two data frames. Take a peak at the first 5 observations in <code>ire_energy</code> and the last 5 observations in <code>ire_pop</code> with the following commands:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>head</a></span><span class='op'>(</span><span class='va'>ire_energy</span>, <span class='fl'>5</span><span class='op'>)</span> <span class='co'># same as ire_energy[1:5, ]</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/utils/head.html'>tail</a></span><span class='op'>(</span><span class='va'>ire_pop</span>, <span class='fl'>5</span><span class='op'>)</span> <span class='co'># same as ire_pop[(nrow(ire_pop) - 4): nrow(ire_pop), ]</span></span>
+<span></span>
+<span><span class='co'># skim() can provide useful overviews of data frames</span></span>
+<span><span class='fu'>skimr</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/skimr/reference/skim.html'>skim</a></span><span class='op'>(</span><span class='va'>ire_pop</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<h3 id="manipulating">Manipulating data</h3>
+<p>We can merge the two data frames on the basis of some common value, e.g. <code>Year</code>, to create a single one called <code>ireland_df</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ireland_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/merge.html'>merge</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>ire_energy</span>, y <span class='op'>=</span> <span class='va'>ire_pop</span>, by.x <span class='op'>=</span> <span class='st'>"Year"</span>, by.y <span class='op'>=</span> <span class='st'>"Year"</span><span class='op'>)</span></span>
+<span><span class='co'># merge() merges data frames x and y on the basis of some column</span></span>
+<span><span class='co'># by.x for x's column and by.y for y's column</span></span></code></pre>
+</div>
+</div>
+<p>Thereafter, create and save a new column called <code>ln_energy_pc</code>, representing the natural logarithm of Ireland’s per capita energy consumption.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ireland_df</span> <span class='op'>&lt;-</span> <span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>ln_energy_pc <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>GJ</span> <span class='op'>/</span> <span class='va'>Population</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='co'># You should recognise mutate() from before</span></span>
+<span><span class='co'># log()'s default setting implies natural logarithmic transformation</span></span>
+<span></span>
+<span><span class='co'># Instead of tidyverse piping, you could have done this:</span></span>
+<span><span class='va'>ireland_df</span> <span class='op'>&lt;-</span> <span class='fu'>mutate</span><span class='op'>(</span>.data <span class='op'>=</span> <span class='va'>ireland_df</span>, ln_energy_pc <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>GJ</span> <span class='op'>/</span> <span class='va'>Population</span><span class='op'>)</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># But piping is more useful when you require multiple consecutive operations</span></span>
+<span><span class='co'># For example, everything we've done thus far could've been condensed</span></span>
+<span><span class='va'>ireland_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"../data/Ireland_energy.csv"</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/base/merge.html'>merge</a></span><span class='op'>(</span></span>
+<span>    x <span class='op'>=</span> <span class='va'>.</span>, <span class='co'># full stop represents the result of all previous operations</span></span>
+<span>    y <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"../data/Ireland_population.csv"</span><span class='op'>)</span>,</span>
+<span>    by.x <span class='op'>=</span> <span class='st'>"Year"</span>,</span>
+<span>    by.y <span class='op'>=</span> <span class='st'>"Year"</span></span>
+<span>  <span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>ln_energy_pc <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Log.html'>log</a></span><span class='op'>(</span><span class='va'>GJ</span> <span class='op'>/</span> <span class='va'>Population</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<p>It is sensible to ensure that data frame’s variables are in the appropriate format or class. For example, <code>ireland_df</code>’s <code>Year</code> column is of the class <code>integer</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ireland_df</span><span class='op'>$</span><span class='va'>Year</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/base/class.html'>class</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>[1] &quot;integer&quot;</code></pre>
+</div>
+<p>Many useful functions require that your vectors/columns be of class <code>date</code>. Transform the <code>Year</code> column from an integer to a date.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ireland_df</span> <span class='op'>&lt;-</span> <span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>Year <span class='op'>=</span> <span class='fu'>glue</span><span class='fu'>::</span><span class='fu'><a href='https://glue.tidyverse.org/reference/glue.html'>glue</a></span><span class='op'>(</span><span class='st'>"{Year}-01-01"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='co'># creates  "1980-01-01" instead of 1980</span></span>
+<span><span class='co'># but the result is of class `character`</span></span>
+<span></span>
+<span><span class='va'>ireland_df</span> <span class='op'>&lt;-</span> <span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>mutate</span><span class='op'>(</span>Year <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, format <span class='op'>=</span> <span class='st'>"%Y-%m-%d"</span><span class='op'>)</span><span class='op'>)</span></span>
+<span><span class='co'># as.Date() renders characters of a given format into dates</span></span>
+<span><span class='co'># "%Y-%m-%d" means yyyy-mm-dd</span></span>
+<span></span>
+<span><span class='co'># Confirm that data is chronological</span></span>
+<span><span class='va'>ireland_df</span> <span class='op'>&lt;-</span> <span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>arrange</span><span class='op'>(</span><span class='va'>Year</span><span class='op'>)</span> <span class='co'># this is equivalent to sorting by Year</span></span></code></pre>
+</div>
+</div>
+<p>Let’s see what our new data frame <code>ireland_df</code> looks like. Run <code>view(ireland_df)</code> or click the appropriate icon in your Global Environment to view the data frame in your workspace.</p>
+<p>When reporting your data frame in a <code>.Rmd</code> or Markdown document, you can create a table using the <a href="https://hughjonesd.github.io/huxtable/"><code>huxtable</code> package</a>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Year</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2013-01-01"</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='co'># subsets data for entries after 2013</span></span>
+<span></span>
+<span>  <span class='fu'>as_hux</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='co'># or huxtable::as_hux() to transform data frame into huxtable object</span></span>
+<span>  <span class='co'># hereafter code to define certain aesthetic qualities of our table</span></span>
+<span></span>
+<span>  <span class='fu'>theme_basic</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='co'># use a theme to make tables more presentable,</span></span>
+<span>  <span class='co'># e.g. theme_article() or theme_compact()</span></span>
+<span></span>
+<span>  <span class='fu'>set_number_format</span><span class='op'>(</span>col <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>2</span>, <span class='fl'>4</span><span class='op'>)</span>, value <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>set_font_size</span><span class='op'>(</span><span class='fl'>10</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>set_caption</span><span class='op'>(</span><span class='st'>"Ireland's energy consumption after 2013"</span><span class='op'>)</span></span></code></pre>
+</div>
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:readingtab">
+<caption style="caption-side: top; text-align: center;"><span id="tab:readingtab">Table 2: </span> Ireland's energy consumption after 2013</caption><col><col><col><col><tr>
+<th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 2pt; font-weight: bold; font-size: 10pt;">Year</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 10pt;">GJ</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: bold; font-size: 10pt;">Population</th><th style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 2pt 6pt 6pt; font-weight: bold; font-size: 10pt;">ln_energy_pc</th></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 2pt; font-weight: normal; font-size: 10pt;">2014-01-01</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 10pt;">603311823.70</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 10pt;">4662713</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 2pt 6pt 6pt; font-weight: normal; font-size: 10pt;">4.86</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 2pt; font-weight: normal; font-size: 10pt;">2015-01-01</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 10pt;">632644273.00</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 10pt;">4708040</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 2pt 6pt 6pt; font-weight: normal; font-size: 10pt;">4.90</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 2pt; font-weight: normal; font-size: 10pt;">2016-01-01</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 10pt;">665078014.40</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 10pt;">4762595</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 2pt 6pt 6pt; font-weight: normal; font-size: 10pt;">4.94</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 2pt; font-weight: normal; font-size: 10pt;">2017-01-01</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 10pt;">674283626.40</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 10pt;">4813138</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 2pt 6pt 6pt; font-weight: normal; font-size: 10pt;">4.94</td></tr>
+<tr>
+<td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 2pt; font-weight: normal; font-size: 10pt;">2018-01-01</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 10pt;">695195813.70</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 10pt;">4876547</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 2pt 6pt 6pt; font-weight: normal; font-size: 10pt;">4.96</td></tr>
+</table>
+
+</div>
+<h3 id="writing-data">Writing data</h3>
+<p>We can now write this data frame back to a <code>.csv</code> file. Let’s save it in the <code>data</code> folder in our working directory.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ireland_df</span> <span class='op'>%&gt;%</span> <span class='co'># data frame to be written to csv</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/utils/write.table.html'>write.csv</a></span><span class='op'>(</span></span>
+<span>    x <span class='op'>=</span> <span class='va'>.</span>, <span class='co'># ireland_df is piped into "."</span></span>
+<span>    file <span class='op'>=</span> <span class='st'>"../data/ireland_complete.csv"</span>, <span class='co'># file path and file name we choose</span></span>
+<span>    row.names <span class='op'>=</span> <span class='cn'>FALSE</span></span>
+<span>  <span class='op'>)</span> <span class='co'># because we have no row names</span></span></code></pre>
+</div>
+</div>
+<h2 id="time-series-analysis">Time series analysis</h2>
+<p>Let’s perform some time series analysis with this data, particularly with respect to Ireland’s energy consumption per capita.</p>
+<h3 id="visualising-time-series">Visualising time series</h3>
+<p>It is always useful to eyeball the data before proceeding with formal analysis. Here are some examples using Base R:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># plot()'s default is a scatterplot</span></span>
+<span><span class='co'># inputting a single vector</span></span>
+<span><span class='va'>ireland_df</span><span class='op'>$</span><span class='va'>ln_energy_pc</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="tutorial_files/figure-html5/visual1-1.png" width="1950" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># undefined x-axis</span></span>
+<span><span class='co'># inputting a data frame with two columns</span></span>
+<span><span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>select</span><span class='op'>(</span><span class='va'>Year</span>, <span class='va'>ln_energy_pc</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>.</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="tutorial_files/figure-html5/visual1-2.png" width="1950" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># lines instead of points</span></span>
+<span><span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>select</span><span class='op'>(</span><span class='va'>Year</span>, <span class='va'>ln_energy_pc</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/graphics/plot.default.html'>plot</a></span><span class='op'>(</span><span class='va'>.</span>, type <span class='op'>=</span> <span class='st'>"l"</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="tutorial_files/figure-html5/visual1-3.png" width="1950" /></p>
+</div>
+<p>As opposed to visualisations with Base R, I prefer <strong><a href="https://ggplot2.tidyverse.org/index.html">ggplot</a></strong>. It offers a comprehensive suite of graphs that can be flexibly tweaked to your liking. <code>ggplot</code> is part of the so-called <a href="https://www.tidyverse.org/"><code>tidyverse</code></a>. To illustrate, let us make a line graph and consider the sequential adding of layers to our “canvas”.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># ggplot() creates an empty 'canvas'</span></span>
+<span><span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="tutorial_files/figure-html5/ggplot-1.png" width="1950" data-distill-preview=1 />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># aes() provides the coordinates (or "mapping")</span></span>
+<span><span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>ln_energy_pc</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="tutorial_files/figure-html5/ggplot-2.png" width="1950" data-distill-preview=1 />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># on the canvas, we add layers with pluses (+)</span></span>
+<span><span class='co'># add one of many existing themes</span></span>
+<span><span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>ln_energy_pc</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="tutorial_files/figure-html5/ggplot-3.png" width="1950" data-distill-preview=1 />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># add a scatterplot</span></span>
+<span><span class='co'># it inherits the previously defined mapping</span></span>
+<span><span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>ln_energy_pc</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="tutorial_files/figure-html5/ggplot-4.png" width="1950" data-distill-preview=1 />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># add a line</span></span>
+<span><span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>ln_energy_pc</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="tutorial_files/figure-html5/ggplot-5.png" width="1950" data-distill-preview=1 />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># add the appropriate labels</span></span>
+<span><span class='co'># add more breaks to the x-axis and change its labels</span></span>
+<span><span class='co'># change the range of the y-axis</span></span>
+<span><span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>ln_energy_pc</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_point</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_line</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span></span>
+<span>    title <span class='op'>=</span> <span class='st'>"Ireland's Primary Energy Consumption"</span>,</span>
+<span>    y <span class='op'>=</span> <span class='st'>"ln(GJs Per Capita)"</span>,</span>
+<span>    x <span class='op'>=</span> <span class='st'>"Date"</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>scale_x_date</span><span class='op'>(</span></span>
+<span>    date_labels <span class='op'>=</span> <span class='st'>"`%y"</span>,</span>
+<span>    date_breaks <span class='op'>=</span> <span class='st'>"2 year"</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>scale_y_continuous</span><span class='op'>(</span>limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>5.5</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<img src="tutorial_files/figure-html5/ggplot-6.png" width="1950" data-distill-preview=1 />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># and customise as you please</span></span>
+<span><span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>Year</span>, y <span class='op'>=</span> <span class='va'>ln_energy_pc</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_point</span><span class='op'>(</span></span>
+<span>    <span class='fu'>aes</span><span class='op'>(</span>color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>Year</span> <span class='op'>&lt;</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2000-01-01"</span><span class='op'>)</span>, <span class='st'>"Before 2000"</span>,</span>
+<span>      <span class='fu'><a href='https://rdrr.io/r/base/ifelse.html'>ifelse</a></span><span class='op'>(</span><span class='va'>Year</span> <span class='op'>&gt;</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2000-01-01"</span><span class='op'>)</span>, <span class='st'>"After 2000"</span>, <span class='st'>"2000"</span><span class='op'>)</span></span>
+<span>    <span class='op'>)</span><span class='op'>)</span>,</span>
+<span>    size <span class='op'>=</span> <span class='fl'>1.5</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_line</span><span class='op'>(</span></span>
+<span>    alpha <span class='op'>=</span> <span class='fl'>0.5</span>,</span>
+<span>    color <span class='op'>=</span> <span class='st'>"lightgrey"</span>,</span>
+<span>    size <span class='op'>=</span> <span class='fl'>1</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span></span>
+<span>    title <span class='op'>=</span> <span class='st'>"Ireland's Primary Energy Consumption"</span>,</span>
+<span>    y <span class='op'>=</span> <span class='st'>"ln(GJs Per Capita)"</span>,</span>
+<span>    x <span class='op'>=</span> <span class='st'>"Date"</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>scale_x_date</span><span class='op'>(</span></span>
+<span>    date_labels <span class='op'>=</span> <span class='st'>"`%y"</span>,</span>
+<span>    date_breaks <span class='op'>=</span> <span class='st'>"2 year"</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>scale_y_continuous</span><span class='op'>(</span>limits <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='fl'>4</span>, <span class='fl'>5.5</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>theme</span><span class='op'>(</span></span>
+<span>    plot.title <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>hjust <span class='op'>=</span> <span class='fl'>0.5</span>, size <span class='op'>=</span> <span class='fl'>10</span><span class='op'>)</span>,</span>
+<span>    axis.title.y <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span></span>
+<span>      margin <span class='op'>=</span> <span class='fu'>margin</span><span class='op'>(</span>t <span class='op'>=</span> <span class='fl'>0</span>, r <span class='op'>=</span> <span class='fl'>10</span>, b <span class='op'>=</span> <span class='fl'>0</span>, l <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,</span>
+<span>      size <span class='op'>=</span> <span class='fl'>10</span></span>
+<span>    <span class='op'>)</span>,</span>
+<span>    axis.title.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span></span>
+<span>      margin <span class='op'>=</span> <span class='fu'>margin</span><span class='op'>(</span>t <span class='op'>=</span> <span class='fl'>0</span>, r <span class='op'>=</span> <span class='fl'>0</span>, b <span class='op'>=</span> <span class='fl'>0</span>, l <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,</span>
+<span>      size <span class='op'>=</span> <span class='fl'>10</span></span>
+<span>    <span class='op'>)</span>,</span>
+<span>    axis.text.x <span class='op'>=</span> <span class='fu'>element_text</span><span class='op'>(</span>angle <span class='op'>=</span> <span class='fl'>45</span><span class='op'>)</span>,</span>
+<span>    legend.position <span class='op'>=</span> <span class='st'>"bottom"</span>,</span>
+<span>    legend.margin <span class='op'>=</span> <span class='fu'>margin</span><span class='op'>(</span>t <span class='op'>=</span> <span class='op'>-</span><span class='fl'>10</span>, r <span class='op'>=</span> <span class='fl'>0</span>, b <span class='op'>=</span> <span class='fl'>0</span>, l <span class='op'>=</span> <span class='fl'>0</span><span class='op'>)</span>,</span>
+<span>    legend.title <span class='op'>=</span> <span class='fu'>element_blank</span><span class='op'>(</span><span class='op'>)</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_label</span><span class='op'>(</span></span>
+<span>    data <span class='op'>=</span> <span class='va'>.</span> <span class='op'>%&gt;%</span> <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>Year</span> <span class='op'>==</span> <span class='fu'><a href='https://rdrr.io/r/base/as.Date.html'>as.Date</a></span><span class='op'>(</span><span class='st'>"2000-01-01"</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>    <span class='fu'>aes</span><span class='op'>(</span>label <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/Round.html'>round</a></span><span class='op'>(</span><span class='va'>ln_energy_pc</span>, <span class='fl'>1</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>    nudge_y <span class='op'>=</span> <span class='fl'>0.15</span>,</span>
+<span>    size <span class='op'>=</span> <span class='fl'>3</span>,</span>
+<span>    color <span class='op'>=</span> <span class='fu'>met.brewer</span><span class='op'>(</span><span class='st'>"Austria"</span>, type <span class='op'>=</span> <span class='st'>"discrete"</span><span class='op'>)</span><span class='op'>[</span><span class='fl'>1</span><span class='op'>]</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_hline</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>color <span class='op'>=</span> <span class='st'>"Mean"</span>, yintercept <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/mean.html'>mean</a></span><span class='op'>(</span><span class='va'>ln_energy_pc</span><span class='op'>)</span><span class='op'>)</span>,</span>
+<span>    size <span class='op'>=</span> <span class='fl'>1</span>,</span>
+<span>    linetype <span class='op'>=</span> <span class='st'>"dashed"</span>,</span>
+<span>    show.legend <span class='op'>=</span> <span class='cn'>FALSE</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>scale_color_manual</span><span class='op'>(</span>values <span class='op'>=</span> <span class='fu'>met.brewer</span><span class='op'>(</span><span class='st'>"Austria"</span>, type <span class='op'>=</span> <span class='st'>"discrete"</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="tutorial_files/figure-html5/ggplot-7.png" width="1950" data-distill-preview=1 /></p>
+</div>
+<h3 id="autocorrelation">Autocorrelation</h3>
+<p>Now that we know what the series looks like, proceed to compute and plot the autocorrelation- and partial autocorrelation function of Ireland’s per capita energy consumption.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>select</span><span class='op'>(</span><span class='va'>ln_energy_pc</span><span class='op'>)</span> <span class='op'>%&gt;%</span> <span class='co'># isolate ln_energy_pc in data frame</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/acf.html'>acf</a></span><span class='op'>(</span></span>
+<span>    plot <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='co'># create a plot</span></span>
+<span>    type <span class='op'>=</span> <span class='st'>"correlation"</span></span>
+<span>  <span class='op'>)</span> <span class='co'># standard ACF</span></span></code></pre>
+</div>
+<img src="tutorial_files/figure-html5/autocor-1.png" width="1950" />
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>select</span><span class='op'>(</span><span class='va'>ln_energy_pc</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/acf.html'>acf</a></span><span class='op'>(</span></span>
+<span>    plot <span class='op'>=</span> <span class='cn'>TRUE</span>,</span>
+<span>    type <span class='op'>=</span> <span class='st'>"partial"</span></span>
+<span>  <span class='op'>)</span> <span class='co'># PACF option</span></span></code></pre>
+</div>
+<p><img src="tutorial_files/figure-html5/autocor-2.png" width="1950" /></p>
+</div>
+<h3 id="unit-root-tests">Unit root tests</h3>
+<p>Use the <code>urca</code> package to test for stationarity by performing Augmented Dickey-Fuller (ADF) tests with <code>ur.df()</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># load the urca package</span></span>
+<span><span class='fu'><a href='https://rdrr.io/pkg/pacman/man/p_load.html'>p_load</a></span><span class='op'>(</span><span class='va'>urca</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># ur.df() requires a vector/array</span></span>
+<span><span class='co'># you should recognise pull() from before</span></span>
+<span><span class='va'>test_vector</span> <span class='op'>&lt;-</span> <span class='va'>ireland_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>pull</span><span class='op'>(</span><span class='va'>ln_energy_pc</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='va'>my_adf1</span> <span class='op'>&lt;-</span> <span class='fu'>ur.df</span><span class='op'>(</span></span>
+<span>  y <span class='op'>=</span> <span class='va'>test_vector</span>, <span class='co'># vector</span></span>
+<span>  type <span class='op'>=</span> <span class='st'>"trend"</span>, <span class='co'># type  of ADF - trend + constant</span></span>
+<span>  lags <span class='op'>=</span> <span class='fl'>5</span>, <span class='co'># max number of lags</span></span>
+<span>  selectlags <span class='op'>=</span> <span class='st'>"AIC"</span></span>
+<span><span class='op'>)</span> <span class='co'># lag selection criteria</span></span>
+<span></span>
+<span><span class='co'># use summary() to present the saved ADF object</span></span>
+<span><span class='co'># summary() wraps many different kinds of objects</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>my_adf1</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+############################################### 
+# Augmented Dickey-Fuller Test Unit Root Test # 
+############################################### 
+
+Test regression trend 
+
+
+Call:
+lm(formula = z.diff ~ z.lag.1 + 1 + tt + z.diff.lag)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.087796 -0.019856  0.009542  0.029923  0.045227 
+
+Coefficients:
+              Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)  0.3937065  0.2278056   1.728   0.0950 .
+z.lag.1     -0.0797608  0.0498511  -1.600   0.1208  
+tt           0.0001319  0.0010831   0.122   0.9039  
+z.diff.lag1  0.1723326  0.1771983   0.973   0.3391  
+z.diff.lag2  0.3115141  0.1794628   1.736   0.0936 .
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.03842 on 28 degrees of freedom
+Multiple R-squared:  0.296, Adjusted R-squared:  0.1954 
+F-statistic: 2.943 on 4 and 28 DF,  p-value: 0.03778
+
+
+Value of test-statistic is: -1.6 1.6437 2.1039 
+
+Critical values for test statistics: 
+      1pct  5pct 10pct
+tau3 -4.15 -3.50 -3.18
+phi2  7.02  5.13  4.31
+phi3  9.31  6.73  5.61</code></pre>
+</div>
+<p>Is the null hypothesis rejected? How about an ADF test that specifies only a constant/drift?</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>my_adf2</span> <span class='op'>&lt;-</span> <span class='fu'>ur.df</span><span class='op'>(</span></span>
+<span>  y <span class='op'>=</span> <span class='va'>test_vector</span>,</span>
+<span>  type <span class='op'>=</span> <span class='st'>"drift"</span>, <span class='co'># type  of ADF - with drift</span></span>
+<span>  lags <span class='op'>=</span> <span class='fl'>5</span>,</span>
+<span>  selectlags <span class='op'>=</span> <span class='st'>"AIC"</span></span>
+<span><span class='op'>)</span></span>
+<span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>my_adf2</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>
+############################################### 
+# Augmented Dickey-Fuller Test Unit Root Test # 
+############################################### 
+
+Test regression drift 
+
+
+Call:
+lm(formula = z.diff ~ z.lag.1 + 1 + z.diff.lag)
+
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.088270 -0.019198  0.009114  0.030175  0.044932 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)  
+(Intercept)  0.37689    0.17811   2.116   0.0430 *
+z.lag.1     -0.07569    0.03633  -2.083   0.0461 *
+z.diff.lag1  0.16583    0.16608   0.999   0.3263  
+z.diff.lag2  0.30364    0.16454   1.845   0.0752 .
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+
+Residual standard error: 0.03776 on 29 degrees of freedom
+Multiple R-squared:  0.2956,    Adjusted R-squared:  0.2228 
+F-statistic: 4.057 on 3 and 29 DF,  p-value: 0.01595
+
+
+Value of test-statistic is: -2.0834 2.5446 
+
+Critical values for test statistics: 
+      1pct  5pct 10pct
+tau2 -3.58 -2.93 -2.60
+phi1  7.06  4.86  3.94</code></pre>
+</div>
+<h1 id="cross-section-analysis">Cross section analysis</h1>
+<p>The <a href="https://lrberge.github.io/fixest/"><code>fixest</code> package</a> aids the estimation of various kinds of regression models. Let’s run a few simple OLS regressions to illustrate. Our example tries to answer the question: <strong>What bearing does education have on wages in 1974?</strong>. We will also control for age and marital status.</p>
+<p>Instead of sourcing <code>.csv</code> files locally, we can download such files directly from the internet. As before, we can use <code>read.csv()</code> to create a data frame called <code>cs_df</code>.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Replace a local file path with a web address</span></span>
+<span><span class='co'># Subset the data to only those observations in 1974</span></span>
+<span><span class='co'># To restrict memory usage, select only the relevant columns</span></span>
+<span><span class='va'>cs_df</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/utils/read.table.html'>read.csv</a></span><span class='op'>(</span><span class='st'>"https://raw.githubusercontent.com/stata2r/stata2r.github.io/main/data/cps_long.csv"</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'><a href='https://rdrr.io/r/stats/filter.html'>filter</a></span><span class='op'>(</span><span class='va'>year</span> <span class='op'>==</span> <span class='fl'>1974</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>select</span><span class='op'>(</span><span class='va'>wage</span>, <span class='va'>educ</span>, <span class='va'>age</span>, <span class='va'>marr</span><span class='op'>)</span></span></code></pre>
+</div>
+</div>
+<h3 id="descriptive-statistics">Descriptive statistics</h3>
+<p>Before we run the regressions, we should probably get a better picture of the data we are dealing with. Take note of the dimensions of the sample and its variables’ types and distributions.</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Get an overview of the sample</span></span>
+<span><span class='co'># Do you notice any issues?</span></span>
+<span><span class='fu'>skimr</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/skimr/reference/skim.html'>skim</a></span><span class='op'>(</span><span class='va'>cs_df</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<caption><span id="tab:olsdata">Table 3: </span>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">cs_df</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">15992</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 10%" />
+<col style="width: 14%" />
+<col style="width: 9%" />
+<col style="width: 8%" />
+<col style="width: 3%" />
+<col style="width: 8%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">wage</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">14016.80</td>
+<td style="text-align: right;">9569.80</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4403.45</td>
+<td style="text-align: right;">15123.58</td>
+<td style="text-align: right;">23584.18</td>
+<td style="text-align: right;">25862.32</td>
+<td style="text-align: left;">▆▂▃▃▇</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">educ</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">12.03</td>
+<td style="text-align: right;">2.87</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">11.00</td>
+<td style="text-align: right;">12.00</td>
+<td style="text-align: right;">13.00</td>
+<td style="text-align: right;">18.00</td>
+<td style="text-align: left;">▁▁▂▇▂</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">age</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">33.23</td>
+<td style="text-align: right;">11.05</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">24.00</td>
+<td style="text-align: right;">31.00</td>
+<td style="text-align: right;">42.00</td>
+<td style="text-align: right;">55.00</td>
+<td style="text-align: left;">▆▇▆▅▅</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">marr</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.71</td>
+<td style="text-align: right;">0.45</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: right;">1.00</td>
+<td style="text-align: left;">▃▁▁▁▇</td>
+</tr>
+</tbody>
+</table>
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Get an impression of wage by marital status</span></span>
+<span><span class='va'>cs_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>select</span><span class='op'>(</span><span class='va'>wage</span>, <span class='va'>marr</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>group_by</span><span class='op'>(</span><span class='va'>marr</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>skimr</span><span class='fu'>::</span><span class='fu'><a href='https://docs.ropensci.org/skimr/reference/skim.html'>skim</a></span><span class='op'>(</span><span class='op'>)</span></span></code></pre>
+</div>
+<table>
+<caption><span id="tab:olsdata">Table 3: </span>Data summary</caption>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Name</td>
+<td style="text-align: left;">Piped data</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Number of rows</td>
+<td style="text-align: left;">15992</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Number of columns</td>
+<td style="text-align: left;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">_______________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Column type frequency:</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">numeric</td>
+<td style="text-align: left;">1</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">________________________</td>
+<td style="text-align: left;"></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Group variables</td>
+<td style="text-align: left;">marr</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Variable type: numeric</strong></p>
+<table>
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 4%" />
+<col style="width: 9%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
+<col style="width: 7%" />
+<col style="width: 2%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 5%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">skim_variable</th>
+<th style="text-align: right;">marr</th>
+<th style="text-align: right;">n_missing</th>
+<th style="text-align: right;">complete_rate</th>
+<th style="text-align: right;">mean</th>
+<th style="text-align: right;">sd</th>
+<th style="text-align: right;">p0</th>
+<th style="text-align: right;">p25</th>
+<th style="text-align: right;">p50</th>
+<th style="text-align: right;">p75</th>
+<th style="text-align: right;">p100</th>
+<th style="text-align: left;">hist</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">wage</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">7681.53</td>
+<td style="text-align: right;">8325.02</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">386.47</td>
+<td style="text-align: right;">4325.08</td>
+<td style="text-align: right;">12987.49</td>
+<td style="text-align: right;">25862.32</td>
+<td style="text-align: left;">▇▂▂▁▂</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">wage</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">16582.74</td>
+<td style="text-align: right;">8818.61</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">10237.66</td>
+<td style="text-align: right;">18677.69</td>
+<td style="text-align: right;">25781.50</td>
+<td style="text-align: right;">25862.32</td>
+<td style="text-align: left;">▃▂▂▃▇</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="regressions">Regressions</h3>
+<p>We can perform standard OLS regressions with <code>fixest</code>’s <code>feols()</code> function. This function requires two arguments, <code>formula</code> (or <code>fml</code>) and <code>data</code>. Formulas are given in the format <code>y ~ x1 + x2</code>, and <code>data</code> refers to a data frame.</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Our first model</span></span>
+<span><span class='va'>model1</span> <span class='op'>&lt;-</span> <span class='fu'>feols</span><span class='op'>(</span>fml <span class='op'>=</span> <span class='va'>wage</span> <span class='op'>~</span> <span class='va'>educ</span>, data <span class='op'>=</span> <span class='va'>cs_df</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># Adding an explanatory continuous variable: age</span></span>
+<span><span class='va'>model2</span> <span class='op'>&lt;-</span> <span class='fu'>feols</span><span class='op'>(</span><span class='va'>wage</span> <span class='op'>~</span> <span class='va'>educ</span> <span class='op'>+</span> <span class='va'>age</span>, <span class='va'>cs_df</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># Adding a categorical variable</span></span>
+<span><span class='va'>model3</span> <span class='op'>&lt;-</span> <span class='fu'>feols</span><span class='op'>(</span><span class='va'>wage</span> <span class='op'>~</span> <span class='va'>educ</span> <span class='op'>+</span> <span class='va'>age</span> <span class='op'>+</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>marr</span><span class='op'>)</span>, <span class='va'>cs_df</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># As before, use summary() to display the results of model1</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>model1</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>OLS estimation, Dep. Var.: wage
+Observations: 15,992
+Standard-errors: IID 
+             Estimate Std. Error t value  Pr(&gt;|t|)    
+(Intercept) 10280.103   324.5497 31.6750 &lt; 2.2e-16 ***
+educ          310.679    26.2467 11.8369 &lt; 2.2e-16 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+RMSE: 9,527.8   Adj. R2: 0.008624</code></pre>
+</div>
+<h3 id="visualising-results">Visualising results</h3>
+<p>Consider using the <code>huxreg()</code> function from the <a href="https://hughjonesd.github.io/huxtable/"><code>huxtable</code> package</a>. Its enables the neat presentation of multiple regression models in a single table. Let’s consider the standard version first.</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>huxreg</span><span class='op'>(</span><span class='va'>model1</span>, <span class='va'>model2</span>, <span class='va'>model3</span><span class='op'>)</span></span></code></pre>
+</div>
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:olshuxreg1">
+<caption style="caption-side: top; text-align: center;"><span id="tab:olshuxreg1">Table 4: </span> </caption><col><col><col><col><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(1)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(2)</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(3)</th></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(Intercept)</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">10280.103 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-4194.788 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-4175.649 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(324.550)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(381.879)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(365.526)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">educ</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">310.679 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">493.332 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">439.230 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(26.247)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(23.960)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(22.977)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">age</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">369.539 ***</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">256.760 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(6.228)&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(6.650)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">factor(marr)1</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">6152.185 ***</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"></th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">(160.809)&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">N</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">15992&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">15992&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">15992&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">R2</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.009&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.188&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">0.256&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">logLik</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-169209.949&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-167618.468&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">-166918.049&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">AIC</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">338423.898&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">335242.937&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;">333844.097&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th colspan="4" style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal;"> *** p &lt; 0.001;  ** p &lt; 0.01;  * p &lt; 0.05.</th></tr>
+</table>
+
+</div>
+<p>However, you may want to improve the look of your regression table with some aesthetic adjustments, as we did for Table <a href="#tab:readingtab">2</a>. Please note all of the optional arguments to the <code>huxreg()</code> function itself.</p>
+<div class="layout-chunk" data-layout="l-body-outset">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='fu'>huxreg</span><span class='op'>(</span></span>
+<span>  <span class='st'>"Model 1"</span> <span class='op'>=</span> <span class='va'>model1</span>, <span class='st'>"Model 2"</span> <span class='op'>=</span> <span class='va'>model2</span>, <span class='st'>"Model 3"</span> <span class='op'>=</span> <span class='va'>model3</span>,</span>
+<span>  statistics <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"N"</span> <span class='op'>=</span> <span class='st'>"nobs"</span>, <span class='st'>"R-squared"</span> <span class='op'>=</span> <span class='st'>"r.squared"</span><span class='op'>)</span>,</span>
+<span>  stars <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span>`*` <span class='op'>=</span> <span class='fl'>0.1</span>, `**` <span class='op'>=</span> <span class='fl'>0.05</span>, `***` <span class='op'>=</span> <span class='fl'>0.01</span>, `****` <span class='op'>=</span> <span class='fl'>0.001</span><span class='op'>)</span>,</span>
+<span>  number_format <span class='op'>=</span> <span class='fl'>2</span>,</span>
+<span>  coefs <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span></span>
+<span>    <span class='st'>"Education"</span> <span class='op'>=</span> <span class='st'>"educ"</span>,</span>
+<span>    <span class='st'>"Age"</span> <span class='op'>=</span> <span class='st'>"age"</span>,</span>
+<span>    <span class='st'>"Married"</span> <span class='op'>=</span> <span class='st'>"factor(marr)1"</span></span>
+<span>  <span class='op'>)</span></span>
+<span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>set_font_size</span><span class='op'>(</span><span class='fl'>8</span><span class='op'>)</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>set_caption</span><span class='op'>(</span><span class='st'>"My Regression Table"</span><span class='op'>)</span></span></code></pre>
+</div>
+<table class="huxtable" data-quarto-disable-processing="true" style="border-collapse: collapse; border: 0px; margin-bottom: 2em; margin-top: 2em; ; margin-left: auto; margin-right: auto;  " id="tab:olshuxreg2">
+<caption style="caption-side: top; text-align: center;"><span id="tab:olshuxreg2">Table 5: </span> My Regression Table</caption><col><col><col><col><tr>
+<th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;"></th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">Model 1</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">Model 2</th><th style="vertical-align: top; text-align: center; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">Model 3</th></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">Education</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">310.68 ****</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">493.33 ****</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">439.23 ****</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;"></th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">(26.25)&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">(23.96)&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">(22.98)&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">Age</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">369.54 ****</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">256.76 ****</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;"></th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">(6.23)&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">(6.65)&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">Married</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">6152.18 ****</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;"></th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.4pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">(160.81)&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">N</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">15992&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">15992&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0.4pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">15992&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">R-squared</th><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.01&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.19&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td><td style="vertical-align: top; text-align: right; white-space: normal; border-style: solid solid solid solid; border-width: 0pt 0pt 0.8pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;">0.26&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td></tr>
+<tr>
+<th colspan="4" style="vertical-align: top; text-align: left; white-space: normal; border-style: solid solid solid solid; border-width: 0.8pt 0pt 0pt 0pt;    padding: 6pt 6pt 6pt 6pt; font-weight: normal; font-size: 8pt;"> **** p &lt; 0.001;  *** p &lt; 0.01;  ** p &lt; 0.05;  * p &lt; 0.1.</th></tr>
+</table>
+
+</div>
+<p><code>fixest</code> also contains various plotting functions based on your regressions. For example, consider the following coefficient plot which graphs the coefficients for each model:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Notice that models need to be entered as a list() object</span></span>
+<span><span class='fu'>coefplot</span><span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span><span class='op'>(</span><span class='va'>model1</span>, <span class='va'>model2</span>, <span class='va'>model3</span><span class='op'>)</span><span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="tutorial_files/figure-html5/coefplots1-1.png" width="1950" /></p>
+</div>
+<h3 id="interaction-effects">Interaction effects</h3>
+<p>You may also need to run regressions using interaction effects. Consider the following example where the effect of education is moderated by marital status:</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='co'># Same as before, but "*" denotes an interaction</span></span>
+<span><span class='va'>model4</span> <span class='op'>&lt;-</span> <span class='fu'>feols</span><span class='op'>(</span><span class='va'>wage</span> <span class='op'>~</span> <span class='va'>educ</span> <span class='op'>*</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>marr</span><span class='op'>)</span>, data <span class='op'>=</span> <span class='va'>cs_df</span><span class='op'>)</span></span>
+<span></span>
+<span><span class='co'># What do our results say?</span></span>
+<span><span class='fu'><a href='https://rdrr.io/r/base/summary.html'>summary</a></span><span class='op'>(</span><span class='va'>model4</span><span class='op'>)</span></span></code></pre>
+</div>
+<pre><code>OLS estimation, Dep. Var.: wage
+Observations: 15,992
+Standard-errors: IID 
+                     Estimate Std. Error   t value   Pr(&gt;|t|)    
+(Intercept)          -45.0497   585.6946 -0.076917 9.3869e-01    
+educ                 642.0020    47.5094 13.513149  &lt; 2.2e-16 ***
+factor(marr)1      14178.7540   676.8164 20.949189  &lt; 2.2e-16 ***
+educ:factor(marr)1  -438.3299    54.8425 -7.992522 1.4117e-15 ***
+---
+Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+RMSE: 8,614.8   Adj. R2: 0.18942</code></pre>
+</div>
+<p>We can visualise the differential effects of education on wages by marital status using <code>ggplot</code> and a plot called <code>geom_smooth</code>. The latter can represent regression lines for married and unmarried respondents.</p>
+<div class="layout-chunk" data-layout="l-body">
+<div class="sourceCode">
+<pre class="sourceCode r"><code class="sourceCode r"><span><span class='va'>cs_df</span> <span class='op'>%&gt;%</span></span>
+<span>  <span class='fu'>ggplot</span><span class='op'>(</span><span class='fu'>aes</span><span class='op'>(</span>x <span class='op'>=</span> <span class='va'>educ</span>, y <span class='op'>=</span> <span class='va'>wage</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>theme_bw</span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>geom_point</span><span class='op'>(</span>alpha <span class='op'>=</span> <span class='fl'>0.5</span><span class='op'>)</span> <span class='op'>+</span> <span class='co'># creates a scatterplot</span></span>
+<span>  <span class='fu'>geom_smooth</span><span class='op'>(</span></span>
+<span>    formula <span class='op'>=</span> <span class='va'>y</span> <span class='op'>~</span> <span class='va'>x</span>, <span class='co'># x, y inherited from aes()</span></span>
+<span>    method <span class='op'>=</span> <span class='st'>"lm"</span>, <span class='co'># specifies linear model</span></span>
+<span>    <span class='fu'>aes</span><span class='op'>(</span>color <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/factor.html'>factor</a></span><span class='op'>(</span><span class='va'>marr</span><span class='op'>)</span><span class='op'>)</span>, <span class='co'># creates two regression lines</span></span>
+<span>    se <span class='op'>=</span> <span class='cn'>TRUE</span>, <span class='co'># display confidence interval,</span></span>
+<span>    level <span class='op'>=</span> <span class='fl'>0.95</span></span>
+<span>  <span class='op'>)</span> <span class='op'>+</span> <span class='co'># confidence level to 95%</span></span>
+<span>  <span class='fu'>theme</span><span class='op'>(</span>legend.position <span class='op'>=</span> <span class='st'>"bottom"</span><span class='op'>)</span> <span class='op'>+</span></span>
+<span>  <span class='fu'>labs</span><span class='op'>(</span></span>
+<span>    y <span class='op'>=</span> <span class='st'>"Wage"</span>, x <span class='op'>=</span> <span class='st'>"Years of Education"</span>, color <span class='op'>=</span> <span class='st'>"Married"</span>,</span>
+<span>    title <span class='op'>=</span> <span class='st'>"The effect of education on wage by marital status"</span></span>
+<span>  <span class='op'>)</span></span></code></pre>
+</div>
+<p><img src="tutorial_files/figure-html5/interactionplot2-1.png" width="1950" /></p>
+</div>
+<h1 id="end">End</h1>
+<p>That was the cursory introduction to <code>R</code> and R Studio with a focus on some basic operations, data visualisations, and a little bit of econometrics. I hope it was useful! You can consult the Acknowledgements and Further Reading sections for additional resources. Thank you for your attention and please feel free to reach out if you encounter any issues.</p>
+<h1 class="appendix" id="acknowledgements">Acknowledgements</h1>
+<p>Lecture notes are compiled from the following resources:</p>
+<ul>
+<li><p><a href="https://raw.githack.com/grantmcdermott/R-intro/master/rIntro.html">R Intro (2018)</a> by Grant R. McDermott and Ed Rubin.</p></li>
+<li><p><a href="https://datsci.nfkatzke.com/posts/2019-07-24-practical-1-getting-you-started/">Data Science for Economics and Finance: Getting you staRted (2021)</a> by N.F. Katzke.</p></li>
+<li><p><a href="https://stata2r.github.io/">Stata2R</a>.</p></li>
+</ul>
+<h1 class="appendix" id="further-reading">Further Reading</h1>
+<p>Should you need additional resources to get started, try the following:</p>
+<ul>
+<li><p><a href="https://www.statmethods.net/">Quick-R</a></p></li>
+<li><p><a href="https://stat447.com/">Data Science Programming Methods (STAT 447)</a> by Dirk Eddelbuettel (University of Illinois)</p></li>
+<li><p><a href="https://www.rstudio.com/resources/cheatsheets/">RStudio Cheatsheets</a></p></li>
+<li><p><a href="https://github.com/uo-ec607/lectures">Data Science for Economists (EC 607)</a> by Grant McDermott (University of Oregon).</p></li>
+<li><p>Use your university credentials to sign up for a <a href="https://education.github.com/pack">GitHub Pro</a> account.</p></li>
+<li><p>Download <a href="https://desktop.github.com/">GitHub Desktop</a> for free and use version control for all your projects.</p></li>
+<li><p>Excellent data visualisation guide with R code at <a href="https://www.data-to-viz.com/">Data to Viz</a></p></li>
+</ul>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r distill-force-highlighting-css"><code class="sourceCode r"></code></pre></div>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr />
+<ol>
+<li id="fn1"><p>If you are planning on applying version control to your new project, it is useful to check <code>Create git repository</code>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Packages are extensions to the <code>R</code> language. They contain code, data, and documentation in a standardised collection format that can be installed by users, typically via a centralised software repository such as CRAN (The Comprehensive R Archive Network). CRAN is a network of ftp (file transfer protocol) and web servers around the world that store identical, up-to-date, versions of code and documentation for R.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
+<!--radix_placeholder_article_footer-->
+<!--/radix_placeholder_article_footer-->
+</div>
+
+<div class="d-appendix">
+</div>
+
+
+<!--radix_placeholder_site_after_body-->
+<!--/radix_placeholder_site_after_body-->
+<!--radix_placeholder_appendices-->
+<div class="appendix-bottom"></div>
+<!--/radix_placeholder_appendices-->
+<!--radix_placeholder_navigation_after_body-->
+<!--/radix_placeholder_navigation_after_body-->
+
+</body>
+
+</html>

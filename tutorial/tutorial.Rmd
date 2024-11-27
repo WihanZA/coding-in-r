@@ -26,8 +26,7 @@ knitr::opts_chunk$set(
   fig.height = 3.5
 )
 
-library(pacman)
-p_load(tidyverse, huxtable, fixest, urca, glue, remotes, xaringanExtra, MetBrewer)
+source("../scripts/packages.R")
 
 options(huxtable.bookdown = TRUE)
 options("huxtable.knitr_output_format" = "html")
@@ -53,7 +52,7 @@ xaringanExtra::use_clipboard()
 3.  R uses **predictive coding** (`Ctrl/Cmd + Space` is very useful).
 
 <center>
-![](images/pred_text.png){width="75%"}
+![](../images/pred_text.png){width="75%"}
 </center>
 
 4.  R is compatible with **Markdown**.
@@ -73,7 +72,7 @@ Before you start, please proceed with the following steps, and download and inst
 Select the appropriate link corresponding to your machine's operating system and follow the subsequent instructions:
 
 <center>
-![](images/r_install.png){width="100%"}
+![](../images/r_install.png){width="100%"}
 </center>
 
 Execute the newly downloaded `R-4.3.2-win.exe` file and follow the instructions. If you encounter any difficulties, please ask for help!
@@ -83,7 +82,7 @@ Execute the newly downloaded `R-4.3.2-win.exe` file and follow the instructions.
 > "RStudio is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management."
 
 <center>
-![](images/rstudio_install.png){width="40%"}
+![](../images/rstudio_install.png){width="40%"}
 </center>
 
 Once you have completed downloading and installing `R`, do the same for RStudio. Execute the newly downloaded `RStudio-2023.12.0-369.exe` file and follow the instructions that follow. 
@@ -91,7 +90,7 @@ Once you have completed downloading and installing `R`, do the same for RStudio.
 3.    After completing Steps 1 and 2, open up RStudio. It should look something like this:
 
 <center>
-![This is the default RStudio Desktop workspace. The Console is on the left, the Environment pane is top-right and the Files pane is bottom-right. You can change the layout of your workspace in the taskbar with `View` > `Panes` > `Pane Layout`. You can change the aesthetics of your workspace in the taskbar with `Tools` > `Global Options` > `Appearance`.](images/default_rstudio.png){width="100%"}
+![This is the default RStudio Desktop workspace. The Console is on the left, the Environment pane is top-right and the Files pane is bottom-right. You can change the layout of your workspace in the taskbar with `View` > `Panes` > `Pane Layout`. You can change the aesthetics of your workspace in the taskbar with `Tools` > `Global Options` > `Appearance`.](../images/default_rstudio.png){width="100%"}
 </center>
 
 4.    `File` > `New Project` > `New directory` > `New project` > `Choose directory location and name`^[If you are planning on applying version control to your new project, it is useful to check `Create git repository`.]
@@ -99,7 +98,7 @@ Once you have completed downloading and installing `R`, do the same for RStudio.
 It is advisable to work from a `R` project, as this keeps track of your most current workspace and variable environment. Its location will serve as your "root folder" or main directory for subsequent operations in the project. To work from a particular project, open a new project with `File` > `Open Project` or starting your session in R Studio by clicking the relevant `.Rproj` file.
 
 <center>
-![To ensure that you are working from the correct project, check whether your project's name appears in this top right-hand corner.](images/project_name.png){width="75%"}
+![To ensure that you are working from the correct project, check whether your project's name appears in this top right-hand corner.](../images/project_name.png){width="75%"}
 </center>
 
 Once operating from a new project, you should be faced with the default workspace, as illustrated in Step 3 above. The pane on the left is called the **Console**. As in `Stata`, code can be typed and executed directly in your console (or "Command" in `Stata`.)
@@ -113,7 +112,7 @@ Alternatively, this code can be stored in- and executed from a script or `.R` fi
 After creating and saving a new script, you should observe a workspace layout like the one summarised in Table \@ref(tab:workspace). 
 
 ```{r workspace, echo=FALSE}
-read.csv("images/workspace.csv", header = TRUE) %>%
+read.csv("../images/workspace.csv", header = TRUE) %>%
   knitr::kable(caption = "Workspace Layout")
 ```
 
@@ -140,7 +139,7 @@ library(pacman)
 If a package `x` has been installed already, `install.packages("x")` will produce the following error:
 
 <center>
-![](images/install_pac.png){width="50%"}
+![](../images/install_pac.png){width="50%"}
 </center>
 
 It can be difficult to keep track of all the packages on your machine. The `pacman` package allows us to easily install and load packages from CRAN with `p_load()`, and from GitHub with `p_load_gh()`. This will install and load a new package, or merely load previously installed ones. Let's install the packages we will be using in this tutorial.
@@ -185,7 +184,7 @@ class(test)
 By executing the relevant code, objects should appear in your global environment like this:
 
 <center>
-![](images/environment.png){width="50%"}
+![](../images/environment.png){width="50%"}
 </center>
 
 Report these variables in your output by running the following:
@@ -285,7 +284,7 @@ Data is often imported from external files, such as `.csv` files. Let's consider
 Instead of repeatedly reading the data from the source files, it is wise to create a data frame. Now, read the data from the `Ireland_energy.csv` file in the `data` folder using `read.csv()`, and create a data frame called `ire_energy` with an assignment operator. The data represents Ireland's energy consumption data for 1980-2018. 
 
 ```{r reading1, eval = TRUE, echo=TRUE}
-ire_energy <- read.csv(file = "data/Ireland_energy.csv", header = TRUE)
+ire_energy <- read.csv(file = "../data/Ireland_energy.csv", header = TRUE)
 # The "file" argument refers to the relative file path from your root directory
 # The "header" argument is set to true because the .csv file contains column headings
 ```
@@ -293,12 +292,12 @@ ire_energy <- read.csv(file = "data/Ireland_energy.csv", header = TRUE)
 Do the same for a corresponding file containing data on Ireland's population from `Ireland_population.csv`, and create a data frame called `ire_pop`. 
 
 ```{r reading2, eval = TRUE, echo=TRUE}
-ire_pop <- read.csv("data/Ireland_population.csv")
+ire_pop <- read.csv("../data/Ireland_population.csv")
 # Sometimes it's unnecessary to spell out the arguments
 ```
 
 <center>
-![When calling your function, access the tip with `Ctrl/Cmd + Space`. Note the potential arguments for the particular function and some arguments' default settings, e.g., `header = TRUE`.](images/function_arguments.png){width="75%"}
+![When calling your function, access the tip with `Ctrl/Cmd + Space`. Note the potential arguments for the particular function and some arguments' default settings, e.g., `header = TRUE`.](../images/function_arguments.png){width="75%"}
 </center>
 
 We now have two data frames. Take a peak at the first 5 observations in `ire_energy` and the last 5 observations in `ire_pop` with the following commands:
@@ -334,10 +333,10 @@ ireland_df <- mutate(.data = ireland_df, ln_energy_pc = log(GJ / Population))
 
 # But piping is more useful when you require multiple consecutive operations
 # For example, everything we've done thus far could've been condensed
-ireland_df <- read.csv("data/Ireland_energy.csv") %>%
+ireland_df <- read.csv("../data/Ireland_energy.csv") %>%
   merge(
     x = ., # full stop represents the result of all previous operations
-    y = read.csv("data/Ireland_population.csv"),
+    y = read.csv("../data/Ireland_population.csv"),
     by.x = "Year",
     by.y = "Year"
   ) %>%
@@ -399,7 +398,7 @@ We can now write this data frame back to a `.csv` file. Let's save it in the `da
 ireland_df %>% # data frame to be written to csv
   write.csv(
     x = ., # ireland_df is piped into "."
-    file = "data/ireland_complete.csv", # file path and file name we choose
+    file = "../data/ireland_complete.csv", # file path and file name we choose
     row.names = FALSE
   ) # because we have no row names
 ```
