@@ -1,0 +1,736 @@
+```{r setup, include=FALSE}
+gc()
+rm(list = ls())
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  cache = FALSE,
+  dpi = 300,
+  message = FALSE,
+  warning = FALSE,
+  fig.height = 3.5
+)
+
+library(pacman)
+p_load(tidyverse, huxtable, fixest, urca, glue, remotes, xaringanExtra, MetBrewer)
+
+options(huxtable.bookdown = TRUE)
+options("huxtable.knitr_output_format" = "html")
+```
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+xaringanExtra::use_clipboard()
+# this to enable clipboard for code chunks
+```
+
+*Tutorial materials can be downloaded from [here](tut_materials.zip).*
+
+*The tutorial is accompanied by a short [assignment](https://www.wihanza.com/posts/2024-01-23-r-assignment/) to be completed by students.*
+
+*This post was last updated on `r format(Sys.time(), '%d %B %Y')`.*
+
+## Why R?
+
+1.  R is **open-source**.
+
+    -   Free updates and dissemination.
+
+    -   Widespread availability of helpful resources like [stackoverflow](https://stackoverflow.com/questions/tagged/r).
+
+2.  R uses **packages**.
+
+    -   R consists of Base-R coupled with third-party libraries of pre-written code, or packages. You not need to reinvent the wheel.
+    
+3.  R uses **predictive coding** (`Ctrl/Cmd + Space` is very useful).
+
+<center>
+![](images/pred_text.png){width="75%"}
+</center>
+
+4.  R is compatible with **Markdown**.
+
+    -   Author, connect to data, and run code in **R Markdown**, RStudio's native authoring framework for data science.
+
+    -   See this [1-minute video summary](https://rmarkdown.rstudio.com/lesson-1.html) of what R Markdown entails.
+
+## Setup
+
+Before you start, please proceed with the following steps, and download and install the necessary software on your machine:
+
+1.    [R](https://cran.r-project.org/) (The programming language you will be using)
+
+> "R is a freely available language and environment for statistical computing and graphics which provides a wide variety of statistical and graphical techniques: linear and nonlinear modelling, statistical tests, time series analysis, classification, clustering, etc."
+
+Select the appropriate link corresponding to your machine's operating system and follow the subsequent instructions:
+
+<center>
+![](images/r_install.png){width="100%"}
+</center>
+
+Execute the newly downloaded `R-4.3.2-win.exe` file and follow the instructions. If you encounter any difficulties, please ask for help!
+
+2.    [RStudio Desktop](https://posit.co/download/rstudio-desktop/) (The program you will be using to interface with the `R` code)
+
+> "RStudio is an integrated development environment (IDE) for R. It includes a console, syntax-highlighting editor that supports direct code execution, as well as tools for plotting, history, debugging and workspace management."
+
+<center>
+![](images/rstudio_install.png){width="40%"}
+</center>
+
+Once you have completed downloading and installing `R`, do the same for RStudio. Execute the newly downloaded `RStudio-2023.12.0-369.exe` file and follow the instructions that follow. 
+
+3.    After completing Steps 1 and 2, open up RStudio. It should look something like this:
+
+<center>
+![This is the default RStudio Desktop workspace. The Console is on the left, the Environment pane is top-right and the Files pane is bottom-right. You can change the layout of your workspace in the taskbar with `View` > `Panes` > `Pane Layout`. You can change the aesthetics of your workspace in the taskbar with `Tools` > `Global Options` > `Appearance`.](images/default_rstudio.png){width="100%"}
+</center>
+
+4.    `File` > `New Project` > `New directory` > `New project` > `Choose directory location and name`^[If you are planning on applying version control to your new project, it is useful to check `Create git repository`.]
+
+It is advisable to work from a `R` project, as this keeps track of your most current workspace and variable environment. Its location will serve as your "root folder" or main directory for subsequent operations in the project. To work from a particular project, open a new project with `File` > `Open Project` or starting your session in R Studio by clicking the relevant `.Rproj` file.
+
+<center>
+![To ensure that you are working from the correct project, check whether your project's name appears in this top right-hand corner.](images/project_name.png){width="75%"}
+</center>
+
+Once operating from a new project, you should be faced with the default workspace, as illustrated in Step 3 above. The pane on the left is called the **Console**. As in `Stata`, code can be typed and executed directly in your console (or "Command" in `Stata`.)
+
+> **Try:** Enter the code `getwd()` in your console to observe the location of your *working directory*, the location of your project.
+
+Alternatively, this code can be stored in- and executed from a script or `.R` file, much like do-files in `Stata`.
+
+5.    Open a new script in the taskbar with `File` > `New File` > `R Script` or with `Ctrl/Cmd + Shift + N`. Save the `.R` file in your working directory with `File` > `Save` or `Ctrl/Cmd + S`.
+
+After creating and saving a new script, you should observe a workspace layout like the one summarised in Table \@ref(tab:workspace). 
+
+```{r workspace, echo=FALSE}
+read.csv("images/workspace.csv", header = TRUE) %>%
+  knitr::kable(caption = "Workspace Layout")
+```
+
+## Basics
+
+With the software installed and operating, and your new project and script created, you are ready to get started with `R` and R Studio. Proceed by copying the code from this post, or by working from the tutorial's corresponding master script available [here](Handout//Intro to R Tutorial Script (2024).R).
+
+> **NB:** Highlighted code in the console or script can be executed using `Ctrl/Cmd + Enter`. When working from a script, output will typically appear in the console.
+
+### Packages
+
+We rely on **packages** to access pre-written functions performing specific tasks.^[Packages are extensions to the `R` language. They contain code, data, and documentation in a standardised collection format that can be installed by users, typically via a centralised software repository such as CRAN (The Comprehensive R Archive Network). CRAN is a network of ftp (file transfer protocol) and web servers around the world that store identical, up-to-date, versions of code and documentation for R.] Packages can be downloaded and installed from **CRAN**, the official repository of packages, or [**GitHub**](https://github.com/), which often acts as an repository for third-party libraries or beta-versions.
+
+Installing, loading and maintaining packages can be tedious. Packages need only be installed with `install.packages("x")` once, after which only `load(x)` is necessary.
+
+```{r pac, eval = FALSE}
+# First install the package from CRAN
+install.packages("pacman")
+
+# Load the installed package into your workspace
+library(pacman)
+```
+
+If a package `x` has been installed already, `install.packages("x")` will produce the following error:
+
+<center>
+![](images/install_pac.png){width="50%"}
+</center>
+
+It can be difficult to keep track of all the packages on your machine. The `pacman` package allows us to easily install and load packages from CRAN with `p_load()`, and from GitHub with `p_load_gh()`. This will install and load a new package, or merely load previously installed ones. Let's install the packages we will be using in this tutorial.
+
+```{r packages_setup, eval= FALSE}
+# From CRAN
+p_load(fixest, tidyverse, huxtable, modelsummary, glue, skimr) # or
+pacman::p_load(fixest, tidyverse, huxtable, modelsummary, glue, skimr)
+
+# From GitHub where "profile/repository name"
+p_load_gh("BlakeRMills/MetBrewer")
+```
+
+> **NB:** Functions are called using the function's name, e.g., `p_load()`, or its full name, e.g., `pacman::p_load()`. The latter is useful when functions from different packages share the same name. 
+
+Directories can be viewed to the bottom-right pane, in addition to plot outputs, currently loaded packages, and help files. Should you ever require help or additional information regarding a specific command, add a `?` before that command and run the code, for example:
+
+```{r glue_help, eval = FALSE}
+?pacman::p_load()
+```
+
+### Environment
+
+`R` is an object-orientated language. Objects of various classes (scalars, matrices, data frames, vectors, etc.) can be stored in memory for later use. Once named and saved, these objects will appear in your global environment.
+
+We use the assignment operators `<-` or `=` to name and save objects. 
+
+> **Shortcut:** `Alt/Option + Minus` to get `<-`
+
+```{r object_example, eval = TRUE}
+# object name <- (or =) value(s)
+a <- 10
+hello <- "Hello world!"
+test <- TRUE
+
+# Determine the class of an object
+class(a)
+class(hello)
+class(test)
+```
+
+By executing the relevant code, objects should appear in your global environment like this:
+
+<center>
+![](images/environment.png){width="50%"}
+</center>
+
+Report these variables in your output by running the following:
+
+```{r object_result, eval = TRUE}
+a
+# or
+print(hello)
+# or by using the glue package for something more fancy
+glue::glue("It's {test}. I saved a variable which contains {hello} and I stored the number {a}.")
+```
+### Arrays
+
+An array object is equivalent to a vector of values from the same class. Arrays can be created by concatenating values using the function `c()`.
+
+```{r arrays, eval = TRUE}
+x <- c(1, 2, 3, 4)
+y <- c(4, 5, 6, 7)
+z <- c(7, 8, 9, 10)
+
+# Useful functions to perform on arrays/vectors
+sum(x)
+min(x)
+median(x)
+
+# summary() provides a summary of the functions above
+summary(x)
+
+# Missing values denoted by NA
+x_with_missing <- c(1, 2, 3, NA)
+
+# Take care to properly treat missing values:
+sum(x_with_missing)
+sum(x_with_missing, na.rm = TRUE)
+```
+
+### Data frames
+
+Data frames, consisting of rows and columns, are the workhorse of statistical analysis in `R`. They can be created in various ways. Rows and columns can also be named.
+
+```{r dataframes1, eval = TRUE}
+# data.frame() can create columns from arrays and assign column names
+df_1 <- data.frame(A = x, B = y, C = z)
+
+# Some useful operations
+colnames(df_1)
+df_1_copy <- df_1
+colnames(df_1_copy) <- c("col1", "col2", "col3")
+colnames(df_1_copy)
+nrow(df_1)
+ncol(df_1)
+```
+
+Specific rows, columns, and cells can be referenced as follows:
+
+```{r dataframes2, eval = TRUE}
+# Return column "A" as a vector
+df_1$A
+
+# df_1[row no., column no.] - empty implies all
+df_1[, 1]
+
+# Using tidyverse's pipe operator %>%
+df_1 %>% pull(A)
+```
+
+> **Shortcut:** `Ctrl/Cmd + Shift + M`  to get %>%
+
+There are numerous ways to subset a data frame.
+
+```{r dataframes3, eval = FALSE}
+# Similarly with rows
+# Return row 2 as a single row data frame
+df_1[2, ]
+
+# Return row 2-3 as a two row data frame
+df_1[2:3, ]
+
+# Return cell in row 2 column 1
+df_1[2, 1]
+```
+
+Let's create a new column named "D":
+
+```{r dataframes32, eval = TRUE}
+# Create a new column "D" that is the sum of A and B
+df_1$D <- df_1$A + df_1$B
+
+# is the same as
+df_1 <- df_1 %>% mutate(D = A + B)
+```
+
+### Reading data
+
+Data is often imported from external files, such as `.csv` files. Let's consider an example. If you haven't done so already, download the `tut_materials.zip` file using [this link](tut_materials.zip). Extract the files in the `.zip` folder and copy the `data` folder into your working directory.
+
+Instead of repeatedly reading the data from the source files, it is wise to create a data frame. Now, read the data from the `Ireland_energy.csv` file in the `data` folder using `read.csv()`, and create a data frame called `ire_energy` with an assignment operator. The data represents Ireland's energy consumption data for 1980-2018. 
+
+```{r reading1, eval = TRUE, echo=TRUE}
+ire_energy <- read.csv(file = "data/Ireland_energy.csv", header = TRUE)
+# The "file" argument refers to the relative file path from your root directory
+# The "header" argument is set to true because the .csv file contains column headings
+```
+
+Do the same for a corresponding file containing data on Ireland's population from `Ireland_population.csv`, and create a data frame called `ire_pop`. 
+
+```{r reading2, eval = TRUE, echo=TRUE}
+ire_pop <- read.csv("data/Ireland_population.csv")
+# Sometimes it's unnecessary to spell out the arguments
+```
+
+<center>
+![When calling your function, access the tip with `Ctrl/Cmd + Space`. Note the potential arguments for the particular function and some arguments' default settings, e.g., `header = TRUE`.](images/function_arguments.png){width="75%"}
+</center>
+
+We now have two data frames. Take a peak at the first 5 observations in `ire_energy` and the last 5 observations in `ire_pop` with the following commands:
+
+```{r displaydf, eval=FALSE}
+head(ire_energy, 5) # same as ire_energy[1:5, ]
+tail(ire_pop, 5) # same as ire_pop[(nrow(ire_pop) - 4): nrow(ire_pop), ]
+
+# skim() can provide useful overviews of data frames
+skimr::skim(ire_pop)
+```
+
+### Manipulating data {#manipulating}
+
+We can merge the two data frames on the basis of some common value, e.g. `Year`, to create a single one called `ireland_df`.
+
+```{r merge1, eval=TRUE}
+ireland_df <- merge(x = ire_energy, y = ire_pop, by.x = "Year", by.y = "Year")
+# merge() merges data frames x and y on the basis of some column
+# by.x for x's column and by.y for y's column
+```
+
+Thereafter, create and save a new column called `ln_energy_pc`, representing the natural logarithm of Ireland's per capita energy consumption.
+
+```{r merge2, eval=TRUE}
+ireland_df <- ireland_df %>%
+  mutate(ln_energy_pc = log(GJ / Population))
+# You should recognise mutate() from before
+# log()'s default setting implies natural logarithmic transformation
+
+# Instead of tidyverse piping, you could have done this:
+ireland_df <- mutate(.data = ireland_df, ln_energy_pc = log(GJ / Population))
+
+# But piping is more useful when you require multiple consecutive operations
+# For example, everything we've done thus far could've been condensed
+ireland_df <- read.csv("data/Ireland_energy.csv") %>%
+  merge(
+    x = ., # full stop represents the result of all previous operations
+    y = read.csv("data/Ireland_population.csv"),
+    by.x = "Year",
+    by.y = "Year"
+  ) %>%
+  mutate(ln_energy_pc = log(GJ / Population))
+```
+
+It is sensible to ensure that data frame's variables are in the appropriate format or class. For example, `ireland_df`'s `Year` column is of the class `integer`.
+
+```{r merge3, eval = TRUE}
+ireland_df$Year %>%
+  class(.)
+```
+
+Many useful functions require that your vectors/columns be of class `date`. Transform the `Year` column from an integer to a date.
+
+```{r merge4, eval = TRUE}
+ireland_df <- ireland_df %>%
+  mutate(Year = glue::glue("{Year}-01-01"))
+# creates  "1980-01-01" instead of 1980
+# but the result is of class `character`
+
+ireland_df <- ireland_df %>%
+  mutate(Year = as.Date(x = Year, format = "%Y-%m-%d"))
+# as.Date() renders characters of a given format into dates
+# "%Y-%m-%d" means yyyy-mm-dd
+
+# Confirm that data is chronological
+ireland_df <- ireland_df %>%
+  arrange(Year) # this is equivalent to sorting by Year
+```
+
+Let's see what our new data frame `ireland_df` looks like. Run `view(ireland_df)` or click the appropriate icon in your Global Environment to view the data frame in your workspace. 
+
+When reporting your data frame in a `.Rmd` or Markdown document, you can create a table using the [`huxtable` package](https://hughjonesd.github.io/huxtable/).
+
+```{r readingtab, eval = TRUE, echo = TRUE}
+ireland_df %>%
+  filter(Year > as.Date("2013-01-01")) %>%
+  # subsets data for entries after 2013
+
+  as_hux() %>%
+  # or huxtable::as_hux() to transform data frame into huxtable object
+  # hereafter code to define certain aesthetic qualities of our table
+
+  theme_basic() %>%
+  # use a theme to make tables more presentable,
+  # e.g. theme_article() or theme_compact()
+
+  set_number_format(col = c(2, 4), value = 2) %>%
+  set_font_size(10) %>%
+  set_caption("Ireland's energy consumption after 2013")
+```
+
+### Writing data
+
+We can now write this data frame back to a `.csv` file. Let's save it in the `data` folder in our working directory.
+
+```{r write, eval = FALSE}
+ireland_df %>% # data frame to be written to csv
+  write.csv(
+    x = ., # ireland_df is piped into "."
+    file = "data/ireland_complete.csv", # file path and file name we choose
+    row.names = FALSE
+  ) # because we have no row names
+```
+
+## Time series analysis
+
+Let's perform some time series analysis with this data, particularly with respect to Ireland's energy consumption per capita.
+
+### Visualising time series
+
+It is always useful to eyeball the data before proceeding with formal analysis. Here are some examples using Base R: 
+
+```{r visual1}
+# plot()'s default is a scatterplot
+# inputting a single vector
+ireland_df$ln_energy_pc %>%
+  plot(.)
+
+# undefined x-axis
+# inputting a data frame with two columns
+ireland_df %>%
+  select(Year, ln_energy_pc) %>%
+  plot(.)
+
+# lines instead of points
+ireland_df %>%
+  select(Year, ln_energy_pc) %>%
+  plot(., type = "l")
+```
+
+As opposed to visualisations with Base R, I prefer **[ggplot](https://ggplot2.tidyverse.org/index.html)**. It offers a comprehensive suite of graphs that can be flexibly tweaked to your liking. `ggplot` is part of the so-called [`tidyverse`](https://www.tidyverse.org/). To illustrate, let us make a line graph and consider the sequential adding of layers to our "canvas".
+
+```{r ggplot, eval = TRUE, echo= TRUE, preview = TRUE}
+# ggplot() creates an empty 'canvas'
+ireland_df %>%
+  ggplot()
+
+# aes() provides the coordinates (or "mapping")
+ireland_df %>%
+  ggplot(aes(x = Year, y = ln_energy_pc))
+
+# on the canvas, we add layers with pluses (+)
+# add one of many existing themes
+ireland_df %>%
+  ggplot(aes(x = Year, y = ln_energy_pc)) +
+  theme_bw()
+
+# add a scatterplot
+# it inherits the previously defined mapping
+ireland_df %>%
+  ggplot(aes(x = Year, y = ln_energy_pc)) +
+  theme_bw() +
+  geom_point()
+
+# add a line
+ireland_df %>%
+  ggplot(aes(x = Year, y = ln_energy_pc)) +
+  theme_bw() +
+  geom_point() +
+  geom_line()
+
+# add the appropriate labels
+# add more breaks to the x-axis and change its labels
+# change the range of the y-axis
+ireland_df %>%
+  ggplot(aes(x = Year, y = ln_energy_pc)) +
+  theme_bw() +
+  geom_point() +
+  geom_line() +
+  labs(
+    title = "Ireland's Primary Energy Consumption",
+    y = "ln(GJs Per Capita)",
+    x = "Date"
+  ) +
+  scale_x_date(
+    date_labels = "`%y",
+    date_breaks = "2 year"
+  ) +
+  scale_y_continuous(limits = c(4, 5.5))
+
+# and customise as you please
+ireland_df %>%
+  ggplot(aes(x = Year, y = ln_energy_pc)) +
+  theme_bw() +
+  geom_point(
+    aes(color = ifelse(Year < as.Date("2000-01-01"), "Before 2000",
+      ifelse(Year > as.Date("2000-01-01"), "After 2000", "2000")
+    )),
+    size = 1.5
+  ) +
+  geom_line(
+    alpha = 0.5,
+    color = "lightgrey",
+    size = 1
+  ) +
+  labs(
+    title = "Ireland's Primary Energy Consumption",
+    y = "ln(GJs Per Capita)",
+    x = "Date"
+  ) +
+  scale_x_date(
+    date_labels = "`%y",
+    date_breaks = "2 year"
+  ) +
+  scale_y_continuous(limits = c(4, 5.5)) +
+  theme(
+    plot.title = element_text(hjust = 0.5, size = 10),
+    axis.title.y = element_text(
+      margin = margin(t = 0, r = 10, b = 0, l = 0),
+      size = 10
+    ),
+    axis.title.x = element_text(
+      margin = margin(t = 0, r = 0, b = 0, l = 0),
+      size = 10
+    ),
+    axis.text.x = element_text(angle = 45),
+    legend.position = "bottom",
+    legend.margin = margin(t = -10, r = 0, b = 0, l = 0),
+    legend.title = element_blank()
+  ) +
+  geom_label(
+    data = . %>% filter(Year == as.Date("2000-01-01")),
+    aes(label = round(ln_energy_pc, 1)),
+    nudge_y = 0.15,
+    size = 3,
+    color = met.brewer("Austria", type = "discrete")[1]
+  ) +
+  geom_hline(aes(color = "Mean", yintercept = mean(ln_energy_pc)),
+    size = 1,
+    linetype = "dashed",
+    show.legend = FALSE
+  ) +
+  scale_color_manual(values = met.brewer("Austria", type = "discrete"))
+```
+
+### Autocorrelation
+
+Now that we know what the series looks like, proceed to compute and plot the autocorrelation- and partial autocorrelation function of Ireland's per capita energy consumption.
+
+```{r autocor, eval = TRUE}
+ireland_df %>%
+  select(ln_energy_pc) %>% # isolate ln_energy_pc in data frame
+  acf(
+    plot = TRUE, # create a plot
+    type = "correlation"
+  ) # standard ACF
+
+ireland_df %>%
+  select(ln_energy_pc) %>%
+  acf(
+    plot = TRUE,
+    type = "partial"
+  ) # PACF option
+```
+
+
+### Unit root tests
+
+Use the `urca` package to test for stationarity by performing Augmented Dickey-Fuller (ADF) tests with `ur.df()`.
+
+```{r adf, eval = TRUE, echo= TRUE}
+# load the urca package
+p_load(urca)
+
+# ur.df() requires a vector/array
+# you should recognise pull() from before
+test_vector <- ireland_df %>%
+  pull(ln_energy_pc)
+
+my_adf1 <- ur.df(
+  y = test_vector, # vector
+  type = "trend", # type  of ADF - trend + constant
+  lags = 5, # max number of lags
+  selectlags = "AIC"
+) # lag selection criteria
+
+# use summary() to present the saved ADF object
+# summary() wraps many different kinds of objects
+summary(my_adf1)
+```
+
+Is the null hypothesis rejected? How about an ADF test that specifies only a constant/drift?
+
+```{r adf_const, eval = TRUE, echo= TRUE}
+my_adf2 <- ur.df(
+  y = test_vector,
+  type = "drift", # type  of ADF - with drift
+  lags = 5,
+  selectlags = "AIC"
+)
+
+summary(my_adf2)
+```
+
+# Cross section analysis
+
+The [`fixest` package](https://lrberge.github.io/fixest/) aids the estimation of various kinds of regression models. Let's run a few simple OLS regressions to illustrate. Our example tries to answer the question: **What bearing does education have on wages in 1974?**. We will also control for age and marital status.
+
+Instead of sourcing `.csv` files locally, we can download such files directly from the internet. As before, we can use `read.csv()` to create a data frame called `cs_df`. 
+
+```{r cs_read, eval = TRUE, cache=TRUE}
+# Replace a local file path with a web address
+# Subset the data to only those observations in 1974
+# To restrict memory usage, select only the relevant columns
+cs_df <- read.csv("https://raw.githubusercontent.com/stata2r/stata2r.github.io/main/data/cps_long.csv") %>%
+  filter(year == 1974) %>%
+  select(wage, educ, age, marr)
+```
+
+### Descriptive statistics
+
+Before we run the regressions, we should probably get a better picture of the data we are dealing with. Take note of the dimensions of the sample and its variables' types and distributions.
+
+```{r olsdata, eval = TRUE, layout="l-body-outset"}
+# Get an overview of the sample
+# Do you notice any issues?
+skimr::skim(cs_df)
+
+# Get an impression of wage by marital status
+cs_df %>%
+  select(wage, marr) %>%
+  group_by(marr) %>%
+  skimr::skim()
+```
+
+### Regressions
+
+We can perform standard OLS regressions with `fixest`'s `feols()` function. This function requires two arguments, `formula` (or `fml`) and `data`. Formulas are given in the format `y ~ x1 + x2`, and `data` refers to a data frame.
+
+```{r ols, eval = TRUE, layout="l-body-outset"}
+# Our first model
+model1 <- feols(fml = wage ~ educ, data = cs_df)
+
+# Adding an explanatory continuous variable: age
+model2 <- feols(wage ~ educ + age, cs_df)
+
+# Adding a categorical variable
+model3 <- feols(wage ~ educ + age + factor(marr), cs_df)
+
+# As before, use summary() to display the results of model1
+summary(model1)
+```
+
+### Visualising results
+
+Consider using the `huxreg()` function from the [`huxtable` package](https://hughjonesd.github.io/huxtable/). Its enables the neat presentation of multiple regression models in a single table. Let's consider the standard version first.
+
+```{r olshuxreg1, eval = TRUE, layout="l-body-outset"}
+huxreg(model1, model2, model3)
+```
+
+However, you may want to improve the look of your regression table with some aesthetic adjustments, as we did for Table \@ref(tab:readingtab). Please note all of the optional arguments to the `huxreg()` function itself.
+
+```{r olshuxreg2, eval = TRUE, layout="l-body-outset"}
+huxreg(
+  "Model 1" = model1, "Model 2" = model2, "Model 3" = model3,
+  statistics = c("N" = "nobs", "R-squared" = "r.squared"),
+  stars = c(`*` = 0.1, `**` = 0.05, `***` = 0.01, `****` = 0.001),
+  number_format = 2,
+  coefs = c(
+    "Education" = "educ",
+    "Age" = "age",
+    "Married" = "factor(marr)1"
+  )
+) %>%
+  set_font_size(8) %>%
+  set_caption("My Regression Table")
+```
+
+`fixest` also contains various plotting functions based on your regressions. For example, consider the following coefficient plot which graphs the coefficients for each model:
+
+```{r coefplots1, eval = TRUE}
+# Notice that models need to be entered as a list() object
+coefplot(list(model1, model2, model3))
+```
+
+### Interaction effects
+
+You may also need to run regressions using interaction effects. Consider the following example where the effect of education is moderated by marital status:
+
+```{r interactionplot1, eval = TRUE}
+# Same as before, but "*" denotes an interaction
+model4 <- feols(wage ~ educ * factor(marr), data = cs_df)
+
+# What do our results say?
+summary(model4)
+```
+
+We can visualise the differential effects of education on wages by marital status using `ggplot` and a plot called `geom_smooth`. The latter can represent regression lines for married and unmarried respondents.
+
+```{r interactionplot2}
+cs_df %>%
+  ggplot(aes(x = educ, y = wage)) +
+  theme_bw() +
+  geom_point(alpha = 0.5) + # creates a scatterplot
+  geom_smooth(
+    formula = y ~ x, # x, y inherited from aes()
+    method = "lm", # specifies linear model
+    aes(color = factor(marr)), # creates two regression lines
+    se = TRUE, # display confidence interval,
+    level = 0.95
+  ) + # confidence level to 95%
+  theme(legend.position = "bottom") +
+  labs(
+    y = "Wage", x = "Years of Education", color = "Married",
+    title = "The effect of education on wage by marital status"
+  )
+```
+
+
+# End
+
+That was the cursory introduction to `R` and R Studio with a focus on some basic operations, data visualisations, and a little bit of econometrics. I hope it was useful! You can consult the Acknowledgements and Further Reading sections for additional resources. Thank you for your attention and please feel free to reach out if you encounter any issues.
+
+<!-- Finally, please do not forget to attempt the accompanying assignment to be found [here](https://www.wihanza.com/teaching/2023-01-25-r-assignment/). -->
+
+# Acknowledgements {.appendix}
+
+Lecture notes are compiled from the following resources:
+
+- [R Intro (2018)](https://raw.githack.com/grantmcdermott/R-intro/master/rIntro.html) by Grant R. McDermott and Ed Rubin.
+
+- [Data Science for Economics and Finance: Getting you staRted (2021)](https://datsci.nfkatzke.com/posts/2019-07-24-practical-1-getting-you-started/) by N.F. Katzke.
+
+- [Stata2R](https://stata2r.github.io/).
+
+# Further Reading {.appendix}
+
+Should you need additional resources to get started, try the following:
+
+- [Quick-R](https://www.statmethods.net/)
+
+- [Data Science Programming Methods (STAT 447)](https://stat447.com/) by Dirk Eddelbuettel (University of Illinois)
+
+- [RStudio Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
+
+- [Data Science for Economists (EC 607)](https://github.com/uo-ec607/lectures) by Grant McDermott (University of Oregon). 
+
+- Use your university credentials to sign up for a [GitHub Pro](https://education.github.com/pack) account.
+
+- Download [GitHub Desktop](https://desktop.github.com/) for free and use version control for all your projects.
+
+- Excellent data visualisation guide with R code at [Data to Viz](https://www.data-to-viz.com/)
