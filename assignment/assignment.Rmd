@@ -1,0 +1,127 @@
+---
+title: "Introduction to R: Assignment"
+description: |
+  This assignment accompanies the "Introduction to R" tutorial session for MCom (Economics) students attending the Intensive Statistics course at Stellenbosch University (2024).
+author: Wihan Marais
+date: 2024-01-24
+output:
+  distill::distill_article:
+    self_contained: false
+    highlight: breezedark
+    highlight_downlit: true
+    toc: true
+    toc_float: true
+    css: extras/style.css
+preview: images/rstudio_logo.png
+categories:
+  - Intensive Statistics
+  - R
+  - Teaching
+base_url: "https://www.wihanza.com/"
+draft: false
+---
+
+```{r setup, include=FALSE}
+gc()
+rm(list = ls())
+
+knitr::opts_chunk$set(echo = FALSE, cache = FALSE, dpi = 300, eval = TRUE)
+options("huxtable.knitr_output_format" = "html")
+```
+
+*This assignment accompanies the [Introduction to R: Tutorial](https://www.wihanza.com/posts/2024-01-23-introduction-to-r/) presented on 23 January 2024.*
+
+*Download the materials needed to complete this assignment [here](assignment_materials.zip).*
+
+*This post was last updated on `r format(Sys.time(), '%d %B %Y')`.*
+
+
+## Task 1
+
+- Open R Studio and create a new project in which you will complete the assignment.
+
+- Ensure that you are working from the new project and download the necessary assignment materials using [this link](assignment_materials.zip). Extract the `data` folder from the compressed folder you have downloaded and copy it to your root directory.
+
+> **Hint:** Run `getwd()` in your console to check the file path of your working directory.
+
+- Create a new R Script and save it as `[yourstudentnumber].R` in your directory. Write and execute the code necessary to complete the rest of the assignment in this R Script.
+
+## Task 2
+
+- Using comments, create headings in your script for each of the subsequent tasks. Write your code under the appropriate headings.
+
+> **Hint:** In `.R` files, comments are created using the pound sign, i.e., `#`.
+
+- Load the `pacman` package using `install.packages("")` (if necessary) and `library()`.
+
+- Install/load the following packages using the `pacman` package:
+  - `tidyverse`
+  - `huxtable`
+  - `fixest`
+
+```{r task2}
+library(pacman)
+p_load(tidyverse, huxtable, fixest)
+```
+
+
+## Task 3
+
+1. Read the `ts_data.csv` file and store it as a data frame in your Global Environment.
+
+2. Use the `tidyverse` syntax (`%>%`) and `mutate()` to ensure that the `Year` column is of the class `date`.
+
+3. Ensure that the data frame is arranged chronologically. 
+
+4. Subset/filter the data frame to contain only observations for France or Italy between the years 1985-2010.
+
+> **Hint:** When filtering, use the AND (`&`) and OR (`|`) operators.
+
+5. Using `ggplot()`, create a line and scatter plot for the time series `ln_consump_pc` of both countries in the same figure. Move the legend to the bottom of the figure and change the label of the y-axis.
+
+> **Hint:** Use `aes(x = Year, y = ln_consump_pc, color = Country)` as the mapping for your `ggplot()` to distinguish between countries.
+
+```{r task3}
+ts_df <- read.csv("data//ts_data.csv") %>%
+  mutate(Year = as.Date(Year)) %>%
+  filter(Country == "France" | Country == "Italy", Year >= as.Date("1985-01-01"), Year <= as.Date("2010-01-01")) %>%
+  arrange(Year)
+
+ts_df %>%
+  ggplot(aes(x = Year, y = ln_consump_pc, color = Country)) +
+  geom_line() +
+  geom_point() +
+  labs(y = "ln(energy consumption per capita)") +
+  theme(legend.position = "bottom")
+```
+
+## Task 4
+
+1. Read the `cs_data.csv` file and store it as a data frame in your Global Environment.
+
+2. Using the `fixest` package, perform the following three OLS regressions and store each of them in your Global Environment:
+
+    - `wage` on `x1` 
+
+    - `wage` on `x1` and `x2`
+
+    - `wage` on `x1` and `x2` and the categorical variable `nodegree`
+
+3. Present all the models in the same regression table using `huxreg()`. You are not required to perform any additional `huxtable` formatting operations.
+
+```{r huxreg, eval=FALSE}
+cs_df <- read.csv("data//cs_data.csv")
+
+model1 <- cs_df %>% feols(wage ~ x1)
+
+model2 <- cs_df %>% feols(wage ~ x1 + x2)
+
+model3 <- cs_df %>% feols(wage ~ x1 + x2 + factor(nodegree))
+
+huxreg(model1, model2, model3)
+```
+
+## Submission
+
+Once you have completed all of the tasks successfully, please save and send your final R Script to [wihanmarais@sun.ac.za](mailto:wihanmarais@sun.ac.za) for grading.
+
