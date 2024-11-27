@@ -1,0 +1,107 @@
+---
+title: "Introduction to R: Memorandum"
+description: |
+  The memorandum for the assignment in "Introduction to R" sessions during the "Intensive Statistics" course for MCom Economics students at the University of Stellenbosch (2023).
+date: 2023-01-26
+output:
+  distill::distill_article:
+    self_contained: false
+    highlight: breezedark
+    highlight_downlit: true
+    toc: true
+    toc_float: true
+
+---
+```{r huxsetup, echo=F}
+options("huxtable.knitr_output_format" = "html")
+```
+
+## Task 1
+
+A new project or `.Rproj` file can be created in RStudio as follows:
+
+`File > New project > New directory > New project > Choose directory location and name.`
+
+Similarly, a new GitHub document is generated in RStudio as follows:
+
+`File > New file > R Markdown > From template > GitHub Document.`
+
+GitHub Documents typically appear in the wild as `README.Rmd` files employed in GitHub repositories.
+
+## Task 2
+
+The following code chunk is intended to set the default settings for subsequent code chunks and to load the minimum necessary packages using `pacman::p_load()`. Default code chunk settings are set using `knitr::opts_chunk$set()` and most templates are pre-populated with this essential code chunk.
+
+```{r setup}
+knitr::opts_chunk$set(
+  warning = FALSE,
+  echo = TRUE,
+  eval = TRUE,
+  fig.height = 3.5,
+  fig.width = 6
+)
+source("../scripts/packages.R")
+
+# NB Note to address strange huxtable output
+options("huxtable.knitr_output_format" = "html")
+# Use this line of code to tell knitr to knit huxtable objects in HTML
+```
+
+Which defaults are we setting?
+
+* `warning = FALSE` Prevent warning or error messages from being displayed in the knitted output.
+* `echo = TRUE` Show both code and output from chunk in your final product.
+* `eval = TRUE` Execute the code written in the chunk.
+* `fig.height = 3.5, fig.width = 6` Set the dimensions (in inches) of figures generated in code chunks to $6 \times 3.5$ inches.
+
+## Task 3
+
+```{r task3}
+ts_df <- read.csv(file = "../data/ts_data.csv") %>%
+  mutate(Year = as.Date(Year, format = "%Y-%m-%d")) %>%
+  filter(
+    Year >= as.Date("1985-01-01"),
+    Year <= as.Date("2010-01-01"),
+    Country == "France"
+  ) %>%
+  arrange(Year)
+
+my_vector <- ts_df %>% pull(ln_consump_pc)
+
+my_adf <- urca::ur.df(
+  y = my_vector,
+  type = "trend",
+  lags = 5,
+  selectlags = "AIC"
+)
+
+summary(my_adf)
+```
+
+## Task 4
+
+```{r task4}
+cs_df <- read.csv(file = "../data/cs_data.csv")
+
+model1 <- fixest::feols(wage ~ x1, data = cs_df)
+
+model2 <- fixest::feols(wage ~ x1 + x2, data = cs_df)
+
+model3 <- fixest::feols(wage ~ x1 + x2 + i(treat), data = cs_df)
+
+huxreg(
+  "Model 1" = model1, "Model 2" = model2, "Model 3" = model3,
+  statistics = c("N" = "nobs", "R-squared" = "r.squared"),
+  stars = c(`*` = 0.1, `**` = 0.05, `***` = 0.01, `****` = 0.001),
+  number_format = 2,
+  coefs = c(
+    "Intercept" = "(Intercept)",
+    "Explanatory 1" = "x1",
+    "Explanatory 2" = "x2",
+    "Treatment Received" = "treat::1"
+  )
+) %>%
+  set_font_size(8) %>%
+  set_align(8:9, 2:4, value = "center") %>%
+  set_caption("Task 4 Regression Table")
+```
