@@ -50,6 +50,7 @@ Should you need additional resources to get started, try the following:
 - [RStudio Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
 - [Data Science for Economists (EC 607)](https://github.com/uo-ec607/lectures) by Grant McDermott (University of Oregon)
 - [Data to Viz](https://www.data-to-viz.com/) - Excellent data visualization guide with R code
+- [wihantemplates](https://github.com/WihanZA/wihantemplates) - R package with useful R Markdown templates for academic writing, including Stellenbosch University dissertation templates
 
 ### Additional Tools
 - Sign up for [GitHub Pro](https://education.github.com/pack) using your university credentials
