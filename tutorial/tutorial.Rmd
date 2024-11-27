@@ -712,31 +712,3 @@ cs_df %>%
 # End
 
 That was the cursory introduction to `R` and R Studio with a focus on some basic operations, data visualisations, and a little bit of econometrics. I hope it was useful! You can consult the Acknowledgements and Further Reading sections for additional resources. Thank you for your attention and please feel free to reach out if you encounter any issues.
-
-# Acknowledgements {.appendix}
-
-Lecture notes are compiled from the following resources:
-
-- [R Intro (2018)](https://raw.githack.com/grantmcdermott/R-intro/master/rIntro.html) by Grant R. McDermott and Ed Rubin.
-
-- [Data Science for Economics and Finance: Getting you staRted (2021)](https://datsci.nfkatzke.com/posts/2019-07-24-practical-1-getting-you-started/) by N.F. Katzke.
-
-- [Stata2R](https://stata2r.github.io/).
-
-# Further Reading {.appendix}
-
-Should you need additional resources to get started, try the following:
-
-- [Quick-R](https://www.statmethods.net/)
-
-- [Data Science Programming Methods (STAT 447)](https://stat447.com/) by Dirk Eddelbuettel (University of Illinois)
-
-- [RStudio Cheatsheets](https://www.rstudio.com/resources/cheatsheets/)
-
-- [Data Science for Economists (EC 607)](https://github.com/uo-ec607/lectures) by Grant McDermott (University of Oregon). 
-
-- Use your university credentials to sign up for a [GitHub Pro](https://education.github.com/pack) account.
-
-- Download [GitHub Desktop](https://desktop.github.com/) for free and use version control for all your projects.
-
-- Excellent data visualisation guide with R code at [Data to Viz](https://www.data-to-viz.com/)
