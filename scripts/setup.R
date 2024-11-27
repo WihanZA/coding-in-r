@@ -1,5 +1,0 @@
-library(usethis)
-usethis::proj_activate(getwd())
-usethis::proj_sitrep()
-usethis::use_git()
-usethis::use_github(private = TRUE)
