@@ -17,6 +17,8 @@ output:
 gc()
 rm(list = ls())
 
+source("../scripts/packages.R")
+
 knitr::opts_chunk$set(echo = FALSE, cache = FALSE, dpi = 300, eval = TRUE)
 options("huxtable.knitr_output_format" = "html")
 ```
@@ -67,7 +69,7 @@ p_load(tidyverse, huxtable, fixest)
 > **Hint:** Use `aes(x = Year, y = ln_consump_pc, color = Country)` as the mapping for your `ggplot()` to distinguish between countries.
 
 ```{r task3}
-ts_df <- read.csv("data//ts_data.csv") %>%
+ts_df <- read.csv("../data//ts_data.csv") %>%
   mutate(Year = as.Date(Year)) %>%
   filter(Country == "France" | Country == "Italy", Year >= as.Date("1985-01-01"), Year <= as.Date("2010-01-01")) %>%
   arrange(Year)
@@ -95,7 +97,7 @@ ts_df %>%
 3. Present all the models in the same regression table using `huxreg()`. You are not required to perform any additional `huxtable` formatting operations.
 
 ```{r huxreg, eval=FALSE}
-cs_df <- read.csv("data//cs_data.csv")
+cs_df <- read.csv("../data//cs_data.csv")
 
 model1 <- cs_df %>% feols(wage ~ x1)
 
