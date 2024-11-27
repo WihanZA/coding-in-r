@@ -1,3 +1,18 @@
+---
+title: "Introduction to R: Tutorial"
+description: |
+  This post serves as the primary tutorial notes for the "Introduction to R" sessions of the Intensive Statistics course for MCom (Economics) students at Stellenbosch University (2024). This lecture is intended to offer a cursory introduction to enable students to perform basic operations in R and RStudio.
+date: 2024-01-23
+output:
+  distill::distill_article:
+    self_contained: false
+    highlight: breezedark
+    highlight_downlit: true
+    toc: true
+    toc_float: true
+
+---
+
 ```{r setup, include=FALSE}
 gc()
 rm(list = ls())
@@ -22,12 +37,6 @@ options("huxtable.knitr_output_format" = "html")
 xaringanExtra::use_clipboard()
 # this to enable clipboard for code chunks
 ```
-
-*Tutorial materials can be downloaded from [here](tut_materials.zip).*
-
-*The tutorial is accompanied by a short [assignment](https://www.wihanza.com/posts/2024-01-23-r-assignment/) to be completed by students.*
-
-*This post was last updated on `r format(Sys.time(), '%d %B %Y')`.*
 
 ## Why R?
 
@@ -704,8 +713,6 @@ cs_df %>%
 # End
 
 That was the cursory introduction to `R` and R Studio with a focus on some basic operations, data visualisations, and a little bit of econometrics. I hope it was useful! You can consult the Acknowledgements and Further Reading sections for additional resources. Thank you for your attention and please feel free to reach out if you encounter any issues.
-
-<!-- Finally, please do not forget to attempt the accompanying assignment to be found [here](https://www.wihanza.com/teaching/2023-01-25-r-assignment/). -->
 
 # Acknowledgements {.appendix}
 

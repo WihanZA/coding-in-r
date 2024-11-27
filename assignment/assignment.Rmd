@@ -2,7 +2,6 @@
 title: "Introduction to R: Assignment"
 description: |
   This assignment accompanies the "Introduction to R" tutorial session for MCom (Economics) students attending the Intensive Statistics course at Stellenbosch University (2024).
-author: Wihan Marais
 date: 2024-01-24
 output:
   distill::distill_article:
@@ -11,14 +10,7 @@ output:
     highlight_downlit: true
     toc: true
     toc_float: true
-    css: extras/style.css
-preview: images/rstudio_logo.png
-categories:
-  - Intensive Statistics
-  - R
-  - Teaching
-base_url: "https://www.wihanza.com/"
-draft: false
+
 ---
 
 ```{r setup, include=FALSE}
@@ -28,13 +20,6 @@ rm(list = ls())
 knitr::opts_chunk$set(echo = FALSE, cache = FALSE, dpi = 300, eval = TRUE)
 options("huxtable.knitr_output_format" = "html")
 ```
-
-*This assignment accompanies the [Introduction to R: Tutorial](https://www.wihanza.com/posts/2024-01-23-introduction-to-r/) presented on 23 January 2024.*
-
-*Download the materials needed to complete this assignment [here](assignment_materials.zip).*
-
-*This post was last updated on `r format(Sys.time(), '%d %B %Y')`.*
-
 
 ## Task 1
 
@@ -123,5 +108,5 @@ huxreg(model1, model2, model3)
 
 ## Submission
 
-Once you have completed all of the tasks successfully, please save and send your final R Script to [wihanmarais@sun.ac.za](mailto:wihanmarais@sun.ac.za) for grading.
+Once you have completed all of the tasks successfully, please save and email your final R Script for grading.
 
